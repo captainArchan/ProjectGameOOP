@@ -9,9 +9,17 @@ package Charactor;
  * @author pangpntt
  */
 public class NPC extends Charactor {
-    protected String Style;
     private int speed;
-    
+    private int stage;
+    public NPC(int height, int weight, int positionX, int positionY, int speed, int stage) {
+    	this.setHeight(height);
+    	this.setWeight(weight);
+    	this.setPositionX(positionX);
+    	this.setPositionY(positionY);
+    	this.speed = speed;
+    	this.stage = stage;
+    	
+    }
     public void jump(){
         
     }
