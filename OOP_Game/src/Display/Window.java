@@ -24,6 +24,7 @@ public class Window {
         jf.add(menu);
         jf.pack();
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf.setLocationRelativeTo(null);
         jf.setVisible(true);
     }
     public void changePanel(){

@@ -12,39 +12,42 @@ import javax.swing.*;
  * @author pangpntt
  */
 public class Menu extends JPanel{
-    private JPanel jpTitle, jpButtonStart, jpButtonSystems, jpButtonExit, jpButton;
+    private JPanel jpTitle, jpButtonStart, jpButtonSystems, jpButtonExit, jpTitle1, jpTitle2;
     private JButton buttonStart, buttonSystems, buttonExit;
     private JInternalFrame selectFrame, SystemsFrame;
     private JLabel title, title2;
     public Menu(){
+    	this.setLayout(new BorderLayout());
+    	jpTitle = new JPanel();
+    	jpButtonStart = new JPanel();
+    	jpButtonSystems = new JPanel();
+    	jpButtonExit = new JPanel();
+    	jpTitle1 = new JPanel();
+    	jpTitle2 = new JPanel();
+    	
+    	title = new JLabel("WORLD CUP");
+    	title2 = new JLabel("ADVENTURE");
+    	
+    	buttonStart = new JButton("Start");
+    	buttonSystems = new JButton("Systems");
+    	buttonExit = new JButton("Exit");
+    	
 
-        jpTitle = new JPanel();
-        jpButtonStart = new JPanel();
-        jpButtonSystems = new JPanel();
-        jpButtonExit = new JPanel();
-        jpButton = new JPanel();
-        buttonStart = new JButton("START");
-        buttonSystems = new JButton("SYSTEMS");
-        buttonExit = new JButton("EXIT");
-        title = new JLabel("WORLD CUP");
-        title2 = new JLabel("ADVENTURE");
-        this.setLayout(new BorderLayout());
-        jpTitle.setLayout(new GridLayout(2,1));
-        jpTitle.add(title);
-        jpTitle.add(title2);
-        this.add(jpTitle, BorderLayout.NORTH);
-        jpButton.setLayout(new GridLayout(2,1));
-        jpButtonStart.setLayout(new FlowLayout());
-        jpButtonStart.add(buttonStart);
-        jpButtonSystems.setLayout(new FlowLayout());
-        jpButtonSystems.add(buttonSystems);
-        jpButton.add(jpButtonStart);
-        jpButton.add(jpButtonSystems);
-        this.add(jpButton);
-        jpButtonExit.setLayout(new FlowLayout());
-        jpButtonExit.add(buttonExit);
+    	jpTitle.setLayout(new GridLayout(4,1));
+    	jpTitle1.add(title);
+    	jpTitle2.add(title2);
+    	jpButtonStart.add(buttonStart);
+    	jpButtonSystems.add(buttonSystems);
+    	jpTitle.add(jpTitle1);
+    	jpTitle.add(jpTitle2);
+    	jpTitle.add(jpButtonStart);
+    	jpTitle.add(jpButtonSystems);
+    	jpButtonExit.add(buttonExit);
+    	
+    	
+        this.add(jpTitle, BorderLayout.CENTER);
         this.add(jpButtonExit, BorderLayout.SOUTH);
-        this.setPreferredSize(new Dimension(640, 480));
+        this.setPreferredSize(new Dimension(1240, 750));
 
     }
     public void changeToSystem(){
