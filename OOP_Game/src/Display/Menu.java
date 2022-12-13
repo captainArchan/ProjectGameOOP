@@ -27,13 +27,18 @@ public class Menu extends JPanel{
     	
     	title = new JLabel("WORLD CUP");
     	title2 = new JLabel("ADVENTURE");
-    	
     	buttonStart = new JButton("Start");
     	buttonSystems = new JButton("Systems");
     	buttonExit = new JButton("Exit");
     	
-
+    	title.setFont(new Font("Monospaced", Font.BOLD, 60));
+    	title2.setFont(new Font("Monospaced", Font.BOLD, 60));
+    	buttonStart.setFont(new Font("Monospaced", Font.BOLD, 60));
+    	buttonSystems.setFont(new Font("Monospaced", Font.BOLD, 60));
+    	
     	jpTitle.setLayout(new GridLayout(4,1));
+    	jpButtonExit.setLayout(new FlowLayout());
+    	
     	jpTitle1.add(title);
     	jpTitle2.add(title2);
     	jpButtonStart.add(buttonStart);
