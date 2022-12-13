@@ -4,17 +4,57 @@
  */
 package Display;
 
+import java.awt.*;
 import javax.swing.*;
 
 /**
  *
  * @author pangpntt
  */
-public class WindowWin extends extraWindow {
-    private JPanel jpWin;
-    private JButton buttonRestart, ButtonBackToMenu;
-    private JTextField textWin;
-    public void Win(){
+public class WindowWin {
+    private JFrame fr;
+    private JInternalFrame jpWin;
+    private JDesktopPane dp;
+    private JPanel jptxt, jpMenu;
+    private JButton ButtonBackToMenu;
+    private JLabel textWin;
+    public WindowWin(){
+        fr = new JFrame();
+        jpWin = new JInternalFrame("winner", true, true, true, true);
+        dp = new JDesktopPane();
+        jptxt = new JPanel();
+        jpMenu = new JPanel();
+        ButtonBackToMenu = new JButton("MENU");
+        textWin = new JLabel("WINNER", SwingConstants.CENTER);
         
+        Font myFont = new Font("Monospaced", Font.BOLD, 100);
+        Font myFont2 = new Font("Monospaced", Font.BOLD, 50);
+        textWin.setFont(myFont);
+        ButtonBackToMenu.setFont(myFont2);
+        
+        fr.setLayout(new BorderLayout());
+        jpWin.setLayout(new BorderLayout());
+        jptxt.setLayout(new GridLayout(2,1));
+        jpMenu.setLayout(new FlowLayout());
+        
+        jpMenu.add(ButtonBackToMenu);
+        jptxt.add(textWin);
+        jptxt.add(jpMenu);
+        jpWin.add(jptxt);
+        dp.add(jpWin);
+        fr.add(dp);
+        
+        
+        jpWin.setSize(450, 300);
+        jpWin.setLocation(380, 200);
+        jpWin.setVisible(true);
+        fr.setSize(1240, 750);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setLocationRelativeTo(null);
+        fr.setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        new WindowWin();
     }
 }
