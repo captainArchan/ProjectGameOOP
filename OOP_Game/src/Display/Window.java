@@ -4,6 +4,7 @@
  */
 package Display;
 
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -11,10 +12,24 @@ import javax.swing.*;
  * @author pangpntt
  */
 public class Window {
-    private Menu menu;
+    private JPanel menu;
     private JInternalFrame windowWin, windowLost, windowPause;
     private Game game;
+    private JFrame jf;
+    
+    public Window(){
+        JPanel menu = new Menu();
+        jf = new JFrame();
+        jf.setLayout(new BorderLayout());
+        jf.add(menu);
+        jf.pack();
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf.setVisible(true);
+    }
     public void changePanel(){
         
+    }
+    public static void main(String[] args) {
+        new Window();
     }
 }
