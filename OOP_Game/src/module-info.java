@@ -6,5 +6,5 @@
  *
  */
 module OOP_Game {
-//	test
+requires java.desktop;
 }
