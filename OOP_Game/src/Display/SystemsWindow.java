@@ -20,7 +20,7 @@ public class SystemsWindow {
     private JFrame fr;
     public SystemsWindow(){
         fr = new JFrame();
-        jpSystems = new JInternalFrame("tesr", true, true,true,true);
+        jpSystems = new JInternalFrame("test", true, true,true,true);
         jpsound = new JPanel();
         jpback = new JPanel();
         sound = new JLabel("SOUND");
@@ -38,8 +38,12 @@ public class SystemsWindow {
         jpSystems.getContentPane().add(jpback);
         dp.add(jpSystems);
         fr.add(dp);
-        jpSystems.setPreferredSize(new Dimension(800, 400));
+        
+        
+        
+        jpSystems.setSize(800,400);
         fr.setSize(1240, 750);
+        fr.add(dp);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jpSystems.setVisible(true);
         fr.setVisible(true);
