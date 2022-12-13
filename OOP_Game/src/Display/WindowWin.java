@@ -45,7 +45,7 @@ public class WindowWin {
         fr.add(dp);
         
         
-        jpWin.setSize(450, 300);
+        jpWin.setSize(500, 300);
         jpWin.setLocation(380, 200);
         jpWin.setVisible(true);
         fr.setSize(1240, 750);
