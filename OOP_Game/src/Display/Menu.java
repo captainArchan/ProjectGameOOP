@@ -12,7 +12,7 @@ import javax.swing.*;
  * @author pangpntt
  */
 public class Menu extends JPanel{
-    private JPanel jpTitle, jpButtonStart, jpButtonSystems, jpButtonExit, jpTitle1, jpTitle2;
+    private JPanel jpTitle, jpButtonStart, jpButtonSystems, jpButtonExit, jpTitle1;
     private JButton buttonStart, buttonSystems, buttonExit;
     private JInternalFrame selectFrame, SystemsFrame;
     private JLabel title, title2;
@@ -23,28 +23,36 @@ public class Menu extends JPanel{
     	jpButtonSystems = new JPanel();
     	jpButtonExit = new JPanel();
     	jpTitle1 = new JPanel();
-    	jpTitle2 = new JPanel();
     	
-    	title = new JLabel("WORLD CUP");
-    	title2 = new JLabel("ADVENTURE");
+    	title = new JLabel("<html>WORLD CUP<br/>ADVENTURE</html>", SwingConstants.CENTER);
     	buttonStart = new JButton("Start");
     	buttonSystems = new JButton("Systems");
     	buttonExit = new JButton("Exit");
+        
+        buttonStart.setBackground(new java.awt.Color(89,6,4));
+        buttonSystems.setBackground(new java.awt.Color(89,6,4));
+        buttonExit.setBackground(new java.awt.Color(166,166,166));
+        
+        Color color = new Color(255,189,89);
+        buttonStart.setForeground(color);
+        buttonSystems.setForeground(color);
+        buttonExit.setForeground(Color.RED);
+        
     	
-    	title.setFont(new Font("Monospaced", Font.BOLD, 60));
-    	title2.setFont(new Font("Monospaced", Font.BOLD, 60));
+    	title.setFont(new Font("Monospaced", Font.BOLD, 80));
     	buttonStart.setFont(new Font("Monospaced", Font.BOLD, 60));
     	buttonSystems.setFont(new Font("Monospaced", Font.BOLD, 60));
+        buttonExit.setFont(new Font("Monospaced", Font.BOLD, 60));
     	
-    	jpTitle.setLayout(new GridLayout(4,1));
-    	jpButtonExit.setLayout(new FlowLayout());
+    	jpTitle.setLayout(new GridLayout(3,1));
+    	jpButtonExit.setLayout(new FlowLayout(FlowLayout.RIGHT));
     	
     	jpTitle1.add(title);
-    	jpTitle2.add(title2);
+
     	jpButtonStart.add(buttonStart);
     	jpButtonSystems.add(buttonSystems);
     	jpTitle.add(jpTitle1);
-    	jpTitle.add(jpTitle2);
+
     	jpTitle.add(jpButtonStart);
     	jpTitle.add(jpButtonSystems);
     	jpButtonExit.add(buttonExit);
