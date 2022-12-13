@@ -48,8 +48,6 @@ public class SystemsWindow {
 		back.setBackground(new java.awt.Color(17, 20, 20));
 		back.setForeground(Color.RED);
 		
-
-		
 		try {
 			wPic = ImageIO.read(this.getClass().getResource("/Image/sound.png"));
 		} catch (IOException e) {
@@ -61,8 +59,8 @@ public class SystemsWindow {
 		Font myFont2 = new Font("Monospaced", Font.BOLD, 30);
 		sound.setFont(myFont);
 		back.setFont(myFont2);
-		jpSlider.setLayout(new BorderLayout());
 		
+		jpSlider.setLayout(new BorderLayout());
 		jpSlider.add(imgSound, BorderLayout.WEST);
 		jpSlider.add(slider, BorderLayout.CENTER);
 
@@ -77,12 +75,12 @@ public class SystemsWindow {
 		jpSystems.getContentPane().add(jpback);
 		
 		dp.add(jpSystems);
-		fr.add(dp);
 		jpSystems.setSize(700, 300);
-		fr.setSize(1240, 750);
-		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jpSystems.setLocation(250, 200);
 		jpSystems.setVisible(true);
+		fr.add(dp);
+		fr.setSize(1240, 750);
+		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fr.setLocationRelativeTo(null);
 		fr.setVisible(true);
 	}
