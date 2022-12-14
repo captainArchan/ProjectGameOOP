@@ -4,12 +4,99 @@
  */
 package Display;
 
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
  * @author pangpntt
  */
-public class SelectTeamWindow {
-    private JPanel jpSelectTeam;
+public class SelectTeamWindow extends JPanel {
+
+    private JPanel jpteam, jpback, jptxt, jpSelect;
+    private JButton buttonGermany, buttonBrazil, buttonArgentina, back;
+    private JLabel title, germany, brazil, argentina;
+    private BufferedImage PicGer, PicBra, PicArgen, bg;
+    //private Graphics g;
+
+    public SelectTeamWindow() {
+        jpteam = new JPanel();
+        jpback = new JPanel();
+        jptxt = new JPanel();
+        jpSelect = new JPanel();
+        buttonGermany = new JButton("");
+        buttonBrazil = new JButton("");
+        buttonArgentina = new JButton("");
+        back = new JButton("BACK");
+        title = new JLabel("SELECT", SwingConstants.CENTER);
+        title.setBorder(new EmptyBorder(70, 0, 0, 0));
+        germany = new JLabel(" GERMANY   ");
+        brazil = new JLabel("BRAZIL  ");
+        argentina = new JLabel("ARGENTINA");
+        
+        title.setForeground(Color.WHITE);
+        germany.setForeground(Color.WHITE);
+        brazil.setForeground(Color.WHITE);
+        argentina.setForeground(Color.WHITE);
+        back.setForeground(Color.YELLOW);
+
+        title.setFont(new Font("Monospaced", Font.BOLD, 100));
+        germany.setFont(new Font("Monospaced", Font.BOLD, 50));
+        brazil.setFont(new Font("Monospaced", Font.BOLD, 50));
+        argentina.setFont(new Font("Monospaced", Font.BOLD, 50));
+        back.setFont(new Font("Monospaced", Font.BOLD, 50));
+
+        try {
+            PicGer = ImageIO.read(this.getClass().getResource("/Image/Germany_stand_jump.png"));
+            PicBra = ImageIO.read(this.getClass().getResource("/Image/Brazil_stand_jump.png"));
+            PicArgen = ImageIO.read(this.getClass().getResource("/Image/Argen_stand_jump.png"));
+            //bg = ImageIO.read(this.getClass().getResource("/Image/bgSelect.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        buttonGermany = new JButton(new ImageIcon(new ImageIcon(PicGer).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
+        buttonBrazil = new JButton(new ImageIcon(new ImageIcon(PicBra).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
+        buttonArgentina = new JButton(new ImageIcon(new ImageIcon(PicArgen).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
+        this.setLayout(new BorderLayout());
+
+        jpteam.setLayout(new FlowLayout());
+        jptxt.setLayout(new FlowLayout());
+        jpback.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        jpSelect.setLayout(new GridLayout(2,1));
+        jpteam.add(buttonGermany);
+        jpteam.add(buttonBrazil);
+        jpteam.add(buttonArgentina);
+        jptxt.add(germany);
+        jptxt.add(brazil);
+        jptxt.add(argentina);
+        jpSelect.add(jpteam);
+        jpSelect.add(jptxt);
+        jpback.add(back);
+
+        this.add(title, BorderLayout.NORTH);
+        this.add(jpSelect);
+        this.add(jpback, BorderLayout.SOUTH);
+        this.setPreferredSize(new Dimension(1240, 750));
+        
+        this.setBackground(new java.awt.Color(89,6,4));
+        jptxt.setBackground(new java.awt.Color(89,6,4));
+        jpback.setBackground(new java.awt.Color(89,6,4));
+        jpteam.setBackground(new java.awt.Color(89,6,4));
+        jpSelect.setBackground(new java.awt.Color(89,6,4));
+        back.setBackground(Color.BLACK);
+        buttonGermany.setBackground(new java.awt.Color(236,155,91));
+        buttonBrazil.setBackground(new java.awt.Color(236,155,91));
+        buttonArgentina.setBackground(new java.awt.Color(236,155,91));
+    }
+
+    
+
+
 }
