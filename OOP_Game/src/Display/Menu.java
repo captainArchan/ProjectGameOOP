@@ -5,38 +5,57 @@
 package Display;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
  * @author pangpntt
  */
 public class Menu extends JPanel{
-    private JPanel jpTitle, jpButtonStart, jpButtonSystems, jpButtonExit, jpTitle1;
+    private JPanel  jpButtonStart, jpButtonSystems, jpButtonExit, jpbutton, jpimg, jp;
     private JButton buttonStart, buttonSystems, buttonExit;
     private JInternalFrame selectFrame, SystemsFrame;
-    private JLabel title, title2;
+    private JLabel title, title2, bgball, img;
+    private BufferedImage ball;
     public Menu(){
     	this.setLayout(new BorderLayout());
-    	jpTitle = new JPanel();
     	jpButtonStart = new JPanel();
     	jpButtonSystems = new JPanel();
     	jpButtonExit = new JPanel();
-    	jpTitle1 = new JPanel();
-    	
-    	title = new JLabel("<html>WORLD CUP<br/>ADVENTURE</html>", SwingConstants.CENTER);
+    	jpbutton = new JPanel();
+        jpimg = new JPanel();
+        jp = new JPanel();
+    	title = new JLabel("<html>WORLD CUP<br/>ADVENTURE<br><br></html>", SwingConstants.CENTER);
+        title.setBorder(new EmptyBorder(60, 0, 0, 0));
     	buttonStart = new JButton("Start");
     	buttonSystems = new JButton("Systems");
     	buttonExit = new JButton("Exit");
         
-        buttonStart.setBackground(new java.awt.Color(89,6,4));
-        buttonSystems.setBackground(new java.awt.Color(89,6,4));
-        buttonExit.setBackground(new java.awt.Color(166,166,166));
+        try {
+            ball = ImageIO.read(this.getClass().getResource("/Image/agen.gif"));
+	} catch (IOException e) {
+            e.printStackTrace();
+	}
+	img = new JLabel(new ImageIcon(new ImageIcon(ball).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT)));
         
-        Color color = new Color(255,189,89);
+        buttonStart.setBackground(new java.awt.Color(207,10,10));
+        buttonSystems.setBackground(new java.awt.Color(207,10,10));
+        buttonExit.setBackground(new java.awt.Color(166,166,166));
+        this.setBackground(new java.awt.Color(89,6,4));
+        jpButtonStart.setBackground(new java.awt.Color(89,6,4));
+        jpButtonSystems.setBackground(new java.awt.Color(89,6,4));
+        jpButtonExit.setBackground(new java.awt.Color(89,6,4));
+        jp.setBackground(new java.awt.Color(89,6,4));
+        
+        Color color = new Color(220,95,0);
         buttonStart.setForeground(color);
         buttonSystems.setForeground(color);
         buttonExit.setForeground(Color.RED);
+        title.setForeground(Color.WHITE);
         
     	
     	title.setFont(new Font("Monospaced", Font.BOLD, 80));
@@ -44,22 +63,25 @@ public class Menu extends JPanel{
     	buttonSystems.setFont(new Font("Monospaced", Font.BOLD, 60));
         buttonExit.setFont(new Font("Monospaced", Font.BOLD, 60));
     	
-    	jpTitle.setLayout(new GridLayout(3,1));
+    	jpButtonStart.setLayout(new FlowLayout());
+        jpButtonSystems.setLayout(new FlowLayout());
     	jpButtonExit.setLayout(new FlowLayout(FlowLayout.RIGHT));
-    	
-    	jpTitle1.add(title);
+        jpimg.setLayout(new FlowLayout(FlowLayout.LEFT));
+    	jpbutton.setLayout(new GridLayout(2,1));
+        jp.setLayout(new FlowLayout());
 
     	jpButtonStart.add(buttonStart);
     	jpButtonSystems.add(buttonSystems);
-    	jpTitle.add(jpTitle1);
-
-    	jpTitle.add(jpButtonStart);
-    	jpTitle.add(jpButtonSystems);
+    	jpbutton.add(jpButtonStart);
+        jpbutton.add(jpButtonSystems);	
     	jpButtonExit.add(buttonExit);
+        jpimg.add(img);
+        jp.add(jpimg);
+        jp.add(jpButtonExit);
     	
-    	
-        this.add(jpTitle, BorderLayout.CENTER);
-        this.add(jpButtonExit, BorderLayout.SOUTH);
+    	this.add(title, BorderLayout.NORTH);
+        this.add(jpbutton);
+        this.add(jp, BorderLayout.SOUTH);
         this.setPreferredSize(new Dimension(1240, 750));
 
     }
