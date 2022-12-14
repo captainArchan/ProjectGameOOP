@@ -32,6 +32,16 @@ public class WindowWin {
         textWin.setFont(myFont);
         ButtonBackToMenu.setFont(myFont2);
         
+        jpWin.setBackground(new java.awt.Color(248, 157, 19));
+        jptxt.setBackground(new java.awt.Color(248, 157, 19));
+        jpMenu.setBackground(new java.awt.Color(248, 157, 19));
+        ButtonBackToMenu.setBackground(new java.awt.Color(27, 18, 15));
+        
+        Color color = new Color(230, 222, 221);
+        Color color2 = new Color(143, 29, 20);
+        textWin.setForeground(color2);
+        ButtonBackToMenu.setForeground(color);
+        
         fr.setLayout(new BorderLayout());
         jpWin.setLayout(new BorderLayout());
         jptxt.setLayout(new GridLayout(2,1));

@@ -39,12 +39,16 @@ public class SelectTeamWindow extends JPanel {
         germany = new JLabel(" GERMANY   ");
         brazil = new JLabel("BRAZIL  ");
         argentina = new JLabel("ARGENTINA");
-        
-        title.setForeground(Color.WHITE);
+
+        Color color = new Color(236, 155, 91);
+        Color color2 = new Color(248, 157, 19);
+        title.setForeground(color2);
         germany.setForeground(Color.WHITE);
         brazil.setForeground(Color.WHITE);
         argentina.setForeground(Color.WHITE);
-        back.setForeground(Color.YELLOW);
+        back.setForeground(color);
+        ImageIcon icon = new ImageIcon("/Image/agen.gif");
+        JLabel gif = new JLabel(icon);
 
         title.setFont(new Font("Monospaced", Font.BOLD, 100));
         germany.setFont(new Font("Monospaced", Font.BOLD, 50));
@@ -60,7 +64,7 @@ public class SelectTeamWindow extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         buttonGermany = new JButton(new ImageIcon(new ImageIcon(PicGer).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
         buttonBrazil = new JButton(new ImageIcon(new ImageIcon(PicBra).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
         buttonArgentina = new JButton(new ImageIcon(new ImageIcon(PicArgen).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
@@ -69,7 +73,7 @@ public class SelectTeamWindow extends JPanel {
         jpteam.setLayout(new FlowLayout());
         jptxt.setLayout(new FlowLayout());
         jpback.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        jpSelect.setLayout(new GridLayout(2,1));
+        jpSelect.setLayout(new GridLayout(2, 1));
         jpteam.add(buttonGermany);
         jpteam.add(buttonBrazil);
         jpteam.add(buttonArgentina);
@@ -84,19 +88,16 @@ public class SelectTeamWindow extends JPanel {
         this.add(jpSelect);
         this.add(jpback, BorderLayout.SOUTH);
         this.setPreferredSize(new Dimension(1240, 750));
-        
-        this.setBackground(new java.awt.Color(89,6,4));
-        jptxt.setBackground(new java.awt.Color(89,6,4));
-        jpback.setBackground(new java.awt.Color(89,6,4));
-        jpteam.setBackground(new java.awt.Color(89,6,4));
-        jpSelect.setBackground(new java.awt.Color(89,6,4));
+
+        this.setBackground(new java.awt.Color(143, 29, 20));
+        jptxt.setBackground(new java.awt.Color(143, 29, 20));
+        jpback.setBackground(new java.awt.Color(143, 29, 20));
+        jpteam.setBackground(new java.awt.Color(143, 29, 20));
+        jpSelect.setBackground(new java.awt.Color(143, 29, 20));
         back.setBackground(Color.BLACK);
-        buttonGermany.setBackground(new java.awt.Color(236,155,91));
-        buttonBrazil.setBackground(new java.awt.Color(236,155,91));
-        buttonArgentina.setBackground(new java.awt.Color(236,155,91));
+        buttonGermany.setBackground(new java.awt.Color(236, 155, 91));
+        buttonBrazil.setBackground(new java.awt.Color(236, 155, 91));
+        buttonArgentina.setBackground(new java.awt.Color(236, 155, 91));
     }
-
-    
-
 
 }

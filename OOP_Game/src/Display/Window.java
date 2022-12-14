@@ -12,16 +12,19 @@ import javax.swing.*;
  * @author pangpntt
  */
 public class Window {
-    private JPanel menu;
+    private JPanel menu, selectTeam;
     private JInternalFrame windowWin, windowLost, windowPause;
     private Game game;
     private JFrame jf;
     
+    
     public Window(){
         JPanel menu = new Menu();
+        JPanel selectTeam = new SelectTeamWindow();
         jf = new JFrame();
         jf.setLayout(new BorderLayout());
         jf.add(menu);
+//       jf.add(selectTeam);
         jf.pack();
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setLocationRelativeTo(null);

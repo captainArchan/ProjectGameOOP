@@ -33,9 +33,13 @@ public class WindowPause {
         buttonRestart.setFont(myFont);
         buttonMenu.setFont(myFont);
         
-        buttonPlay.setBackground(new java.awt.Color(89,6,4));
-        buttonRestart.setBackground(new java.awt.Color(89,6,4));
-        buttonMenu.setBackground(new java.awt.Color(89,6,4));
+        buttonPlay.setBackground(new java.awt.Color(143, 29, 20));
+        buttonRestart.setBackground(new java.awt.Color(143, 29, 20));
+        buttonMenu.setBackground(new java.awt.Color(143, 29, 20));
+        jpPause.setBackground(new java.awt.Color(248, 157, 19));
+        jpPlay.setBackground(new java.awt.Color(248, 157, 19));
+        jpRestart.setBackground(new java.awt.Color(248, 157, 19));
+        jpMenu.setBackground(new java.awt.Color(248, 157, 19));
         
         buttonPlay.setForeground(Color.WHITE);
         buttonRestart.setForeground(Color.WHITE);

@@ -10,7 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.RoundedBorder;
+
 /**
  *
  * @author pangpntt
@@ -22,7 +22,7 @@ public class Menu extends JPanel {
     private JInternalFrame selectFrame, SystemsFrame;
     private JLabel title, title2, bgball, img;
     private BufferedImage ball;
-    private int radius=10;
+    private int radius=20;
 
     public Menu() {
         this.setLayout(new BorderLayout());
@@ -37,7 +37,7 @@ public class Menu extends JPanel {
         buttonStart = new JButton("Start");
         buttonSystems = new JButton("Systems");
         buttonExit = new JButton("Exit");
-        buttonExit.setBorder(new RoundedBorder(radius));
+        //buttonExit.setBorder(new RoundedBorder(radius));
 //        buttonExit.setBorder(new RoundBorder(radius));
 
         try {
@@ -61,6 +61,7 @@ public class Menu extends JPanel {
         buttonStart.setForeground(color2);
         buttonSystems.setForeground(color2);
         buttonExit.setForeground(Color.RED);
+
         title.setForeground(color);
 
 

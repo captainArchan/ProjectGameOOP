@@ -31,7 +31,7 @@ public class SystemsWindow {
 	public SystemsWindow() {
 		fr = new JFrame();
 		
-		jpSystems = new JInternalFrame("test", true, true, true, true);
+		jpSystems = new JInternalFrame("sound", true, true, true, true);
 		
 		jpsound = new JPanel();
 		jpback = new JPanel();
@@ -43,10 +43,19 @@ public class SystemsWindow {
 		
 		slider = new JSlider();
 		
+
+                
 		back = new JButton("BACK");
 		back.setBorderPainted(false);
 		back.setBackground(new java.awt.Color(17, 20, 20));
 		back.setForeground(Color.RED);
+                
+                jpSlider.setBackground(new java.awt.Color(248, 157, 19));
+                jpSystems.setBackground(new java.awt.Color(248, 157, 19));
+                jpsound.setBackground(new java.awt.Color(248, 157, 19));
+                jpback.setBackground(new java.awt.Color(248, 157, 19));
+                Color color = new Color(143, 29, 20);
+                sound.setForeground(color);
 		
 		try {
 			wPic = ImageIO.read(this.getClass().getResource("/Image/sound.png"));
@@ -65,6 +74,7 @@ public class SystemsWindow {
 		jpSlider.add(slider, BorderLayout.CENTER);
 
 		jpSystems.setLayout(new BorderLayout()); 
+                jpSystems.setBackground(new java.awt.Color(240,249,255));
 		jpsound.setLayout(new GridLayout(2, 1));
 		jpsound.add(sound);
 		jpsound.add(jpSlider);
