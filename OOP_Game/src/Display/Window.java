@@ -19,21 +19,19 @@ public class Window {
     
     
     public Window(){
-        JPanel menu = new Menu();
-        JPanel selectTeam = new SelectTeamWindow();
-        jf = new JFrame();
+    	JFrame jf = new JFrame();
+        JPanel menu = new Menu(jf);
         jf.setLayout(new BorderLayout());
         jf.add(menu);
-//       jf.add(selectTeam);
         jf.pack();
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setLocationRelativeTo(null);
         jf.setVisible(true);
     }
-    public void changePanel(){
-        
-    }
+  
     public static void main(String[] args) {
-        new Window();
+			new Window();
+
+
     }
 }

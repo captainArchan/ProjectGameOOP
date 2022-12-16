@@ -18,7 +18,7 @@ public class WindowWin {
     private JPanel jptxt, jpMenu;
     private JButton ButtonBackToMenu;
     private JLabel textWin;
-    public WindowWin(){
+    public WindowWin(){ 
         fr = new JFrame();
         jpWin = new JInternalFrame("winner", true, true, true, true);
         dp = new JDesktopPane();

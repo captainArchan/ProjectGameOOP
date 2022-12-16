@@ -13,6 +13,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Action.DisplayListener;
+
 /**
  *
  * @author pangpntt
@@ -23,9 +25,11 @@ public class SelectTeamWindow extends JPanel {
     private JButton buttonGermany, buttonBrazil, buttonArgentina, back;
     private JLabel title, germany, brazil, argentina;
     private BufferedImage PicGer, PicBra, PicArgen, bg;
+    private JFrame jf;
     //private Graphics g;
 
-    public SelectTeamWindow() {
+    public SelectTeamWindow(JFrame jf) {
+    	this.jf = jf;
         jpteam = new JPanel();
         jpback = new JPanel();
         jptxt = new JPanel();
@@ -39,6 +43,8 @@ public class SelectTeamWindow extends JPanel {
         germany = new JLabel(" GERMANY   ");
         brazil = new JLabel("BRAZIL  ");
         argentina = new JLabel("ARGENTINA");
+        
+        back.addActionListener(new DisplayListener(jf));
 
         Color color = new Color(236, 155, 91);
         Color color2 = new Color(248, 157, 19);
@@ -53,7 +59,7 @@ public class SelectTeamWindow extends JPanel {
         title.setFont(new Font("Monospaced", Font.BOLD, 100));
         germany.setFont(new Font("Monospaced", Font.BOLD, 50));
         brazil.setFont(new Font("Monospaced", Font.BOLD, 50));
-        argentina.setFont(new Font("Monospaced", Font.BOLD, 50));
+        argentina.setFont(new Font("Monospaced", Font.BOLD, 50)); 
         back.setFont(new Font("Monospaced", Font.BOLD, 50));
 
         try {
@@ -70,7 +76,7 @@ public class SelectTeamWindow extends JPanel {
         buttonArgentina = new JButton(new ImageIcon(new ImageIcon(PicArgen).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
         this.setLayout(new BorderLayout());
 
-        jpteam.setLayout(new FlowLayout());
+        jpteam.setLayout(new FlowLayout()); 
         jptxt.setLayout(new FlowLayout());
         jpback.setLayout(new FlowLayout(FlowLayout.RIGHT));
         jpSelect.setLayout(new GridLayout(2, 1));
