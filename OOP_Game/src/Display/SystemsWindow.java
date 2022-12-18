@@ -36,7 +36,6 @@ public class SystemsWindow extends JFrame {
 		jpEmtry = new JPanel();
 
 		sound = new JLabel("SOUND", SwingConstants.CENTER);
-		slider = new JSlider();
 
 		back = new JButton("BACK");
 		back.addActionListener(new DisplayListener(jf, this));

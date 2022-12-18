@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Action.DisplayListener;
+import java.io.File;
 
 /**
  *
@@ -23,12 +24,9 @@ public class Menu extends JPanel {
 
 	private JPanel jpButtonStart, jpButtonSystems, jpButtonExit, jpbutton, jpimg, jp;
 	private JButton buttonStart, buttonSystems, buttonExit;
-	private JInternalFrame selectFrame, SystemsFrame;
-	private JLabel title, title2, bgball, img;
-	private BufferedImage ball;
-
+	private JLabel title, img;
+        ImageIcon icon = new ImageIcon("/ProjectGameOOP/OOP_Game/src/Image/Argen_win.png");
 	private JFrame jf;
-
 
 	public Menu(JFrame jf) {
 		this.jf = jf;
@@ -41,6 +39,7 @@ public class Menu extends JPanel {
 		jpimg = new JPanel();
 		jp = new JPanel();
 		title = new JLabel("<html>WORLD CUP<br/>ADVENTURE<br><br></html>", SwingConstants.CENTER);
+                img = new JLabel();
 		title.setBorder(new EmptyBorder(60, 0, 0, 0));
 		buttonStart = new JButton("Start");
 		buttonSystems = new JButton("Systems");
@@ -48,15 +47,8 @@ public class Menu extends JPanel {
 		buttonStart.addActionListener(new DisplayListener(jf));
 		buttonSystems.addActionListener(new DisplayListener(jf));
 		buttonExit.addActionListener(new DisplayListener(jf));
-		// buttonExit.setBorder(new RoundedBorder(radius));
-//        buttonExit.setBorder(new RoundBorder(radius));
-
-		try {
-			ball = ImageIO.read(this.getClass().getResource("/Image/Argen_win.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		img = new JLabel(new ImageIcon(new ImageIcon(ball).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT)));
+                img.setIcon(icon);
+                img.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconWidth()));
 
 		buttonStart.setBackground(new java.awt.Color(27, 18, 15));
 		buttonSystems.setBackground(new java.awt.Color(27, 18, 15));
@@ -92,8 +84,10 @@ public class Menu extends JPanel {
 		jpbutton.add(jpButtonStart);
 		jpbutton.add(jpButtonSystems);
 		jpButtonExit.add(buttonExit);
+                jp.add(img);
+                jp.add(title);
 
-		this.add(title, BorderLayout.NORTH);
+		this.add(jp, BorderLayout.NORTH);
 		this.add(jpbutton);
 		this.add(jpButtonExit, BorderLayout.SOUTH);
 		this.setPreferredSize(new Dimension(1240, 750));
