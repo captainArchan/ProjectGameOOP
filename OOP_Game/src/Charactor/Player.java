@@ -86,9 +86,6 @@ public class Player extends Charactor {
 	}
 
 	public void move() {
-//		if (keyH.jumpPressed == true || keyH.rightPressed == true || keyH.leftPressed == true
-//				|| keyH.slidePressed == true) {
-
 		if (keyH.getJumpPressed() == true || keyH.getRightPressed() == true || keyH.getLeftPressed() == true
 				|| keyH.getSlidePressed() == true) {
 
@@ -148,34 +145,9 @@ public class Player extends Charactor {
 				img = animations[0][2];
 			}
 		}
-//		switch (this.getDebugGraphicsOptions()) {
-//		case "up":
-//			if (spriteNum == 1) {
-//				img = animations[0][3];
-//			}
-//			break;
-//		case "down":
-//			img = animations[0][3];
-//			break;
-//		case "left":
-//			if (spriteNum == 1) {
-//				img = animations[0][1];
-//			} else if (spriteNum == 2) {
-//				img = animations[0][2];
-//			}
-//			break;
-//		case "right":
-//			if (spriteNum == 1) {
-//				img = animations[0][1];
-//			} else if (spriteNum == 2) {
-//				img = animations[0][2];
-//			}
-//			break;
-//		}
 
 		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 
-//		g2.fillRect(this.getPositionX(), this.getPositionY(), gp.tileSize, gp.tileSize);
 		if (gp.getJumping()) {
 			if (this.getPositionY() >= 400) {
 				this.setPositionY(this.getPositionY() - 1);

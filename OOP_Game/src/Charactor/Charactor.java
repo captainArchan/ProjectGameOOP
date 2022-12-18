@@ -81,12 +81,4 @@ public class Charactor extends JPanel {
 		return this.direction;
 	}
 }
-//public class Charactor extends JPanel{
-//    public int playerX, playerY,enemyX, enemyY;
-//    public int speed;
-//    public BufferedImage die,slide,stand,walk,walk2,win,enemy1,enemy2;
-//    public String direction;
-//    public int spriteCounter = 0;
-//    public int spriteNum = 1;
-//    
-//}
+
