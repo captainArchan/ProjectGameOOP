@@ -14,7 +14,7 @@ import javax.swing.*;
 public class Window {
     private JPanel menu, selectTeam;
     private JInternalFrame windowWin, windowLost, windowPause;
-    private Game game;
+    private GamePanel game;
     private JFrame jf;
     
     
