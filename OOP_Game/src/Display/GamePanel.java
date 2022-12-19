@@ -46,19 +46,19 @@ public class GamePanel extends JPanel implements Runnable {
 
 	private Player player = new Player(this, keyH);
 	private NPC npc1 = new NPC(this, player,150, 150, 350, 600, "jump", 1);
-	private Pit npc2 = new Pit(this, player, 600, 525, 200, 200, 1);
-	private NPC npc3 = new NPC(this, player,150, 150, 950, 600, "slide", 1);
-	private NPC npc4 = new NPC(this, player,150, 150, 350, 600, "jump", 2);
-	private Pit npc5 = new Pit(this, player, 900, 525, 200, 200, 2);
-	private Pit npc6 = new Pit(this, player, 300, 525, 200, 200, 3);
-	private NPC npc7 = new NPC(this, player,150, 150, 600, 600, "jump", 3);
-	private Pit npc8 = new Pit(this, player,950, 525, 200, 200, 3);
-	private NPC npc9 = new NPC(this, player,150, 150, 300, 600, "jump", 4);
-	private NPC npc10 = new NPC(this,player,150, 150, 600, 600, "slide", 4);
-	private Pit npc11 = new Pit(this, player,950, 525, 200, 200, 4);
-	private NPC npc12 = new NPC(this, player,150, 150, 300, 600, "jump", 5);
-	private NPC npc13 = new NPC(this, player,150, 150, 600, 600, "jump", 5);
-	private Goal npc14 = new Goal(this, 1000, 450, 400, 400, 5);
+	private Pit pit1 = new Pit(this, player, 650, 525, 200, 200, 1);
+	private NPC npc2 = new NPC(this, player,150, 150, 950, 600, "slide", 1);
+	private NPC npc3 = new NPC(this, player,150, 150, 350, 600, "jump", 2);
+	private Pit pit2 = new Pit(this, player, 900, 525, 200, 200, 2);
+	private Pit pit3 = new Pit(this, player, 300, 525, 200, 200, 3);
+	private NPC npc4 = new NPC(this, player,150, 150, 600, 600, "jump", 3);
+	private Pit pit4 = new Pit(this, player,950, 525, 200, 200, 3);
+	private NPC npc5 = new NPC(this, player,150, 150, 300, 600, "jump", 4);
+	private NPC npc6 = new NPC(this,player,150, 150, 600, 600, "slide", 4);
+	private Pit pit5 = new Pit(this, player,950, 525, 200, 200, 4);
+	private NPC npc7 = new NPC(this, player,150, 150, 300, 600, "jump", 5);
+	private NPC npc8 = new NPC(this, player,150, 150, 600, 600, "jump", 5);
+	private Goal goal = new Goal(this, 1000, 450, 400, 400, 5);
 
 	private Background background = new Background(this, player);
 
@@ -106,7 +106,18 @@ public class GamePanel extends JPanel implements Runnable {
 		player.move();
 		checkBG();
 		npc1.checkTouch();
+		pit1.checkTouch();
 		npc2.checkTouch();
+		npc3.checkTouch();
+		pit2.checkTouch();
+		pit3.checkTouch();
+		pit4.checkTouch();
+		npc4.checkTouch();
+		npc5.checkTouch();
+		npc6.checkTouch();
+		pit5.checkTouch();
+		npc7.checkTouch();
+		npc8.checkTouch();
 	}
 
 	private void checkBG() {
@@ -162,19 +173,19 @@ public class GamePanel extends JPanel implements Runnable {
 		background.Draw(g5);
 
 		npc1.Draw(g3);
-		npc2.Draw(g4);
-		npc3.Draw(g6);
-		npc4.Draw(g7);
-		npc5.Draw(g8);
-		npc6.Draw(g9);
-		npc7.Draw(g10);
-		npc8.Draw(g11);
-		npc9.Draw(g12);
-		npc10.Draw(g13);
-		npc11.Draw(g14);
-		npc12.Draw(g15);
-		npc13.Draw(g16);
-		npc14.Draw(g17);
+		pit1.Draw(g4);
+		npc2.Draw(g6);
+		npc3.Draw(g7);
+		pit2.Draw(g8);
+		pit3.Draw(g9);
+		pit4.Draw(g10);
+		npc4.Draw(g11);
+		npc5.Draw(g12);
+		npc6.Draw(g13);
+		pit5.Draw(g14);
+		npc7.Draw(g15);
+		npc8.Draw(g16);
+		goal.Draw(g17);
 
 		player.Draw(g2);
 		g2.dispose();
