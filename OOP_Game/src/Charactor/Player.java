@@ -91,25 +91,25 @@ public class Player extends Charactor {
 
 			if (keyH.getJumpPressed() == true && this.getPositionY() >= 550) {
 				this.setDirection("up");
-//				gp.jumping = true;
+
 				gp.setJumping(true);
 				new Thread(new Player.thread()).start();
 			}
 			if (keyH.getRightPressed() == true) {
-				// direction = "right";
+
 				this.setDirection("right");
 				this.setPositionX(this.getSpeed() + this.getPositionX());
 			}
 			if (keyH.getLeftPressed() == true) {
-				// direction = "left";
+
 				this.setDirection("left");
 				this.setPositionX(this.getPositionX() - this.getSpeed());
 			}
 			if (keyH.getSlidePressed() == true) {
-				// direction = "down";
+
 				this.setDirection("down");
 			}
-//			spriteCounter++;
+
 			this.setSpriteCounter(this.getSpriteCounter() + 1);
 			if (this.getSpriteCounter() > 10) {// spriteCounter > 10
 				if (this.getSpriteNum() == 1) {
@@ -125,8 +125,6 @@ public class Player extends Charactor {
 	}
 
 	public void Draw(Graphics2D g2) {
-//		g2.setColor(Color.red);
-//		Image img = new ImageIcon("Image\\Argen_stand_jump.PNG").getImage();
 		img = animations[0][0];
 		if (this.getDirection().equals("up")) {
 			img = animations[0][0];
@@ -150,11 +148,13 @@ public class Player extends Charactor {
 
 		if (gp.getJumping()) {
 			if (this.getPositionY() >= 400) {
+				System.out.println(this.getPositionY());
 				this.setPositionY(this.getPositionY() - 1);
-				;
+				
 			} else {
 				this.setPositionY(this.getPositionY() + 1);
-				;
+				System.out.println(this.getPositionY());
+				; 
 			}
 		}
 

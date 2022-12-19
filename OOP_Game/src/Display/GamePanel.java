@@ -11,6 +11,8 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Action.CharacterListener;
+import Charactor.Background;
+import Charactor.NPC;
 import Charactor.Player;
 
 
@@ -40,10 +42,14 @@ public class GamePanel extends JPanel implements Runnable{
     private long currentTime;
     
     private Player player = new Player(this, keyH);
+    private NPC npc1 = new NPC(this, 96, 96, 400, 550, "jump", 1);
+    private NPC npc2 = new NPC(this, 96, 96, 90, 550, "slide", 2);
+    private Background background = new Background(this, player);
+    private int numBackground = 1;
+    private final int finalLine = 1096;
     
     public GamePanel(){
     	this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
@@ -67,7 +73,6 @@ public class GamePanel extends JPanel implements Runnable{
     }
 	@Override
 	public void run() {
-
         while(gameThread != null){
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
@@ -80,13 +85,32 @@ public class GamePanel extends JPanel implements Runnable{
         }
 		
 	}
+
+	
     public void update(){
         player.move();
+        
     }
-    public void paintComponent(Graphics g) {
+
+	
+	public int getNumBackground() {
+		return this.numBackground;
+	}
+	public void setNumBackground(int numBackground) {
+		this.numBackground = numBackground;
+	}
+	
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		Graphics2D g3 = (Graphics2D) g;
+		Graphics2D g4 = (Graphics2D) g;
+		Graphics2D g5 = (Graphics2D) g;
+		background.Draw(g5);
 		player.Draw(g2);
+		npc1.Draw(g3);
+		npc2.Draw(g4);
+
 		g2.dispose();
 		if (jumping) {
 			if (playerY >= 100) {

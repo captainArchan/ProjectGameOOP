@@ -79,6 +79,7 @@ public class GamePanel extends JPanel implements Runnable {
 //  
 //  if (y >= floorHeight) y = floorHeight;
 	public void update() {
+		
 		player.update();
 		enemy.update();
 	}

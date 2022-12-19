@@ -20,7 +20,6 @@ import Action.DisplayListener;
  * @author pangpntt
  */
 public class SystemsWindow extends JFrame {
-
 	private JPanel jpsound, jpback, jpSlider, jpSystems, jpEmtry;
 	private JLabel sound, imgSound;
 	private JButton back;
@@ -34,6 +33,8 @@ public class SystemsWindow extends JFrame {
 		jpback = new JPanel();
 		jpSlider = new JPanel();
 		jpEmtry = new JPanel();
+		
+		slider = new JSlider();
 
 		sound = new JLabel("SOUND", SwingConstants.CENTER);
 
@@ -55,8 +56,7 @@ public class SystemsWindow extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		imgSound = new JLabel(
-				new ImageIcon(new ImageIcon(wPic).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT)));
+		imgSound = new JLabel(new ImageIcon(new ImageIcon(wPic).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT)));
 
 		Font myFont = new Font("Monospaced", Font.BOLD, 80);
 		Font myFont2 = new Font("Monospaced", Font.BOLD, 30);
