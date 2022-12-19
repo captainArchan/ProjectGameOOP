@@ -33,6 +33,7 @@ public class Player extends Charactor {
 	private int spriteCounter;
 	private int spriteNum;
 	public String direction;
+        private int numStartY = 550;
 
 	public Player(Display.GamePanel gp, CharacterListener keyH) {
 		this.gp = gp;
@@ -63,10 +64,10 @@ public class Player extends Charactor {
 
 	public void setDefaultValues() {
 		this.setPositionX(10);
-		this.setPositionY(550);
+		this.setPositionY(numStartY);
 		this.setSpeed(6);
-		this.setWeight(96);
-		this.setHeight(96);
+		this.setWeight(200);
+		this.setHeight(200);
 		this.setSpriteNum(1);
 
 	}
@@ -162,7 +163,7 @@ public class Player extends Charactor {
 			}
 		}
 
-		if (this.getPositionY() != 550 && !gp.getJumping()) {
+		if (this.getPositionY() != numStartY && !gp.getJumping()) {
 			this.setPositionY(this.getPositionY() + 1);
 			;
 		}
