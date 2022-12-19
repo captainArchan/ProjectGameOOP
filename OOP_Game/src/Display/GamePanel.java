@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import Action.CharacterListener;
 import Charactor.Background;
 import Charactor.NPC;
+import Charactor.Pit;
 import Charactor.Player;
 
 /**
@@ -41,8 +42,11 @@ public class GamePanel extends JPanel implements Runnable {
 	private long currentTime;
 
 	private Player player = new Player(this, keyH);
-	private NPC npc1 = new NPC(this, 96, 96, 400, 550, "jump", 1);
-	private NPC npc2 = new NPC(this, 96, 96, 90, 550, "slide", 2);
+	private NPC npc1 = new NPC(this, 150, 150, 350, 600, "jump", 1);
+        private Pit npc2 = new Pit(600, 525, 200, 200, 1);
+        private NPC npc3 = new NPC(this, 150, 150, 900, 600, "slide", 1);
+	private NPC npc4 = new NPC(this, 150, 150, 350, 600, "jump", 2);
+        private Pit npc5 = new Pit(900, 525, 200, 200, 2);
 	
 	
 	private Background background = new Background(this, player);
@@ -129,10 +133,16 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g3 = (Graphics2D) g;
 		Graphics2D g4 = (Graphics2D) g;
 		Graphics2D g5 = (Graphics2D) g;
+                Graphics2D g6 = (Graphics2D) g;
+                Graphics2D g7 = (Graphics2D) g;
+                Graphics2D g8 = (Graphics2D) g;
 		background.Draw(g5);
 		player.Draw(g2);
 		npc1.Draw(g3);
 		npc2.Draw(g4);
+                npc3.Draw(g6);
+                npc4.Draw(g7);
+                npc5.Draw(g8);
 
 		g2.dispose();
 		if (jumping) {
