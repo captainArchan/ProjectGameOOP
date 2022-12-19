@@ -27,9 +27,9 @@ public class NPC extends Charactor {
 	private int round = 0;
 	private boolean isJump = true;
 	private int summonNPC;
-	
+	private Player player;
 
-	public NPC(GamePanel gp, int height, int weight, int positionX, int positionY, String action, int summonNPC) {
+	public NPC(GamePanel gp,Player player,int height, int weight, int positionX, int positionY, String action, int summonNPC) {
 		this.setHeight(height);
 		this.setWeight(weight);
 		this.setPositionX(positionX);
@@ -37,6 +37,7 @@ public class NPC extends Charactor {
 		this.action = action;
 		this.gp = gp;
 		this.summonNPC = summonNPC;
+		this.player = player;
 
 		importImgSlide();
 		importImgStand_Jump();
@@ -105,7 +106,31 @@ public class NPC extends Charactor {
 		g.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 	}
 
+	public void checkTouch() {
+		if (((player.getPositionX() <= this.getPositionX() + 90 && player.getPositionX() >= this.getPositionX() - 110)
+				&& (player.getPositionY() == 550)) && (this.summonNPC == gp.getNumBackground())) {
+//			player.setStatus(false);
+			if(this.action.equals("jump")) {
+				if(player.getDirection().equals("slide")) {
+					if(player.getPositionY() >= this.getPositionY()-20) {
+						System.out.println(this.getPositionY());
+					}
+				}
+				else {
+					if(this.getPositionY()+100 >= player.getPositionY()) {
+						System.out.println(this.getPositionY());
+					}
 
+				}
+			}
+			else {
+				System.out.println(player.getPositionX());
+			}
+			
+
+		}
+
+	}
 	public void setTouchPlayer(boolean touchPlayer) {
 		this.touchPlayer = touchPlayer;
 	}

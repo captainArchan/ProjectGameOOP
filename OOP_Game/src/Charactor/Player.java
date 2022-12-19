@@ -25,7 +25,7 @@ import test.KeyHandler;
  */
 public class Player extends Charactor {
 	private String nationality;
-	private boolean status;
+	private boolean status = true;
 	private BufferedImage img;
 	private BufferedImage[][] animations;
 	private Display.GamePanel gp;
@@ -33,7 +33,7 @@ public class Player extends Charactor {
 	private int spriteCounter;
 	private int spriteNum;
 	public String direction;
-        private int numStartY = 550;
+	private int numStartY = 550;
 
 	public Player(Display.GamePanel gp, CharacterListener keyH) {
 		this.gp = gp;
@@ -65,7 +65,7 @@ public class Player extends Charactor {
 	public void setDefaultValues() {
 		this.setPositionX(10);
 		this.setPositionY(numStartY);
-		this.setSpeed(6);
+		this.setSpeed(8);
 		this.setWeight(200);
 		this.setHeight(200);
 		this.setSpriteNum(1);
@@ -89,7 +89,9 @@ public class Player extends Charactor {
 	}
 
 	public void move() {
-		if (keyH.getJumpPressed() == true || keyH.getRightPressed() == true || keyH.getLeftPressed() == true
+		if (this.getStatus() == false) {
+			this.setDirection("die");
+		} else if (keyH.getJumpPressed() == true || keyH.getRightPressed() == true || keyH.getLeftPressed() == true
 				|| keyH.getSlidePressed() == true) {
 
 			if (keyH.getJumpPressed() == true && this.getPositionY() >= 550) {
@@ -99,7 +101,6 @@ public class Player extends Charactor {
 				new Thread(new Player.thread()).start();
 			}
 			if (keyH.getRightPressed() == true) {
-
 				this.setDirection("right");
 				this.setPositionX(this.getSpeed() + this.getPositionX());
 			}
@@ -126,14 +127,17 @@ public class Player extends Charactor {
 			this.setDirection("up");// direction = "up";
 		}
 	}
-	
+
 	public void Draw(Graphics2D g2) {
 		img = animations[0][0];
-		if(gp.getNumBackground() == 5 && this.getPositionX() >= 1095) {
-			img = animations[0][5];
-			this.setPositionX(1095);
+		if (this.getDirection().equals("die")) {
+			img = animations[0][4];
 		}
-		else if (this.getDirection().equals("up")) {
+
+		else if (gp.getNumBackground() == 5 && this.getPositionX() >= 1030) {
+			img = animations[0][5];
+			this.setPositionX(1045);
+		} else if (this.getDirection().equals("up")) {
 			img = animations[0][0];
 		} else if (this.getDirection().equals("down")) {
 			img = animations[0][3];
@@ -152,7 +156,7 @@ public class Player extends Charactor {
 		}
 		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 		if (gp.getJumping()) {
-			if (this.getPositionY() >= 400) {
+			if (this.getPositionY() >= 300) {
 				System.out.println(this.getPositionY());
 				this.setPositionY(this.getPositionY() - 1);
 
@@ -208,4 +212,5 @@ public class Player extends Charactor {
 	public String getDirection() {
 		return this.direction;
 	}
+
 }
