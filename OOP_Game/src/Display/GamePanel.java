@@ -106,7 +106,7 @@ public class GamePanel extends JPanel implements Runnable {
 		player.move();
 		checkBG();
 		npc1.checkTouch();
-//		npc2.checkTouch();
+		npc2.checkTouch();
 	}
 
 	private void checkBG() {

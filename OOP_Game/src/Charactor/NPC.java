@@ -109,22 +109,22 @@ public class NPC extends Charactor {
 	public void checkTouch() {
 		if (((player.getPositionX() <= this.getPositionX() + 90 && player.getPositionX() >= this.getPositionX() - 110)
 				&& (player.getPositionY() == 550)) && (this.summonNPC == gp.getNumBackground())) {
-//			player.setStatus(false);
+			
 			if(this.action.equals("jump")) {
 				if(player.getDirection().equals("slide")) {
 					if(player.getPositionY() >= this.getPositionY()-20) {
-						System.out.println(this.getPositionY());
+						player.setStatus(false);
 					}
 				}
 				else {
 					if(this.getPositionY()+100 >= player.getPositionY()) {
-						System.out.println(this.getPositionY());
+						player.setStatus(false);
 					}
 
 				}
 			}
 			else {
-				System.out.println(player.getPositionX());
+				player.setStatus(false);
 			}
 			
 
