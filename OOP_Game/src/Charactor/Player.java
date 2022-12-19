@@ -156,7 +156,7 @@ public class Player extends Charactor {
 		}
 		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 		if (gp.getJumping()) {
-			if (this.getPositionY() >= 300) {
+			if (this.getPositionY() >= 200) {
 				System.out.println(this.getPositionY());
 				this.setPositionY(this.getPositionY() - 1);
 
