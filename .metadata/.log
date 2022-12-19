@@ -2671,3 +2671,117 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.core 4 0 2022-12-19 21:08:03.123
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2022-12-19 21:08:03.123
+!MESSAGE Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:423)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:374)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:508)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:471)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:289)
+	... 3 more
+
+!ENTRY org.eclipse.egit.core 4 0 2022-12-19 21:08:15.808
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2022-12-19 21:08:15.808
+!MESSAGE Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:423)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:374)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:508)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:471)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:289)
+	... 3 more
+
+!ENTRY org.eclipse.egit.core 4 0 2022-12-19 21:09:17.231
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2022-12-19 21:09:17.231
+!MESSAGE Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:423)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:374)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:508)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:471)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:289)
+	... 3 more
+
+!ENTRY org.eclipse.egit.core 4 0 2022-12-19 21:09:54.298
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2022-12-19 21:09:54.298
+!MESSAGE Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:423)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:374)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:508)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:471)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:289)
+	... 3 more
+
+!ENTRY org.eclipse.egit.core 4 0 2022-12-19 21:11:38.310
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2022-12-19 21:11:38.310
+!MESSAGE Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:423)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:374)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:508)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:471)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:289)
+	... 3 more
+
+!ENTRY org.eclipse.egit.core 4 0 2022-12-19 21:11:55.327
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2022-12-19 21:11:55.327
+!MESSAGE Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:423)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:374)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+OOP_Game/src/Display/GamePanel.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:508)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:471)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:289)
+	... 3 more

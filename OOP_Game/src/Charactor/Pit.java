@@ -11,6 +11,8 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import Display.GamePanel;
+
 /**
  *
  * @author pangpntt
@@ -18,12 +20,14 @@ import javax.imageio.ImageIO;
 public class Pit extends Charactor {
 	private int numOfBackground;
 	private BufferedImage img;
-	public Pit(int positionX, int positionY, int weight, int height, int numOfBackground) {
+	private GamePanel gp;
+	public Pit(GamePanel gp, int positionX, int positionY, int weight, int height, int numOfBackground) {
 		this.setPositionX(positionX);
 		this.setPositionY(positionY);
 		this.setWeight(weight);
 		this.setHeight(height);
 		this.numOfBackground = numOfBackground;
+		this.gp = gp;
 		importImg();
 	}
 	private void importImg() {
@@ -37,7 +41,10 @@ public class Pit extends Charactor {
 
 	}
 	public void Draw(Graphics2D g2) {
-		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
+		if(gp.getNumBackground() == this.numOfBackground) {
+			g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
+		}
+
 	}
 
 }

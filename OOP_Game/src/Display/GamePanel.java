@@ -39,10 +39,11 @@ public class GamePanel extends JPanel implements Runnable {
 
 	private Player player = new Player(this, keyH);
 	private NPC npc1 = new NPC(this, 150, 150, 350, 600, "jump", 1);
-	private Pit npc2 = new Pit(600, 525, 200, 200, 1);
+	private Pit npc2 = new Pit(this, 600, 525, 200, 200, 1);
 	private NPC npc3 = new NPC(this, 150, 150, 900, 600, "slide", 1);
 	private NPC npc4 = new NPC(this, 150, 150, 350, 600, "jump", 2);
-	private Pit npc5 = new Pit(900, 525, 200, 200, 2);
+	private Pit npc5 = new Pit(this, 900, 525, 200, 200, 2);
+
 
 	private Background background = new Background(this, player);
 	private int numBackground = 1;
@@ -128,9 +129,11 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g3 = (Graphics2D) g;
 		Graphics2D g4 = (Graphics2D) g;
 		Graphics2D g5 = (Graphics2D) g;
+
 		Graphics2D g6 = (Graphics2D) g;
 		Graphics2D g7 = (Graphics2D) g;
 		Graphics2D g8 = (Graphics2D) g;
+
 		background.Draw(g5);
 		player.Draw(g2);
 		npc1.Draw(g3);
