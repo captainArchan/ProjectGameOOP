@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  */
 public class Charactor extends JPanel {
 	private int height;
-	private int weight;
+	private int width;
 	private int positionX;
 	private int positionY;
 	private int speed;
@@ -29,11 +29,11 @@ public class Charactor extends JPanel {
 	}
 
 	public void setWeight(int weight) {
-		this.weight = weight;
+		this.width = weight;
 	}
 
 	public int getWeight() {
-		return this.weight;
+		return this.width;
 	}
 
 	public void setPositionX(int positionX) {

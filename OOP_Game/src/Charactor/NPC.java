@@ -27,7 +27,7 @@ public class NPC extends Charactor {
 	private int round = 0;
 	private boolean isJump = true;
 	private int summonNPC;
-
+	
 
 	public NPC(GamePanel gp, int height, int weight, int positionX, int positionY, String action, int summonNPC) {
 		this.setHeight(height);
