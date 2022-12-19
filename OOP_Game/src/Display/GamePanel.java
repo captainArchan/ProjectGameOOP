@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import Action.CharacterListener;
 import Charactor.Background;
+import Charactor.Goal;
 import Charactor.NPC;
 import Charactor.Pit;
 import Charactor.Player;
@@ -133,6 +134,7 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g6 = (Graphics2D) g;
 		Graphics2D g7 = (Graphics2D) g;
 		Graphics2D g8 = (Graphics2D) g;
+		Graphics2D g9 = (Graphics2D) g;
 
 		background.Draw(g5);
 		player.Draw(g2);
