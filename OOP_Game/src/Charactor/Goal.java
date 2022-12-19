@@ -42,7 +42,6 @@ public class Goal extends Charactor {
 
 	}
 	public void Draw(Graphics2D g2) {
-		System.out.println(img);
 		if(this.gp.getNumBackground() == summon) {
 			g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 		}
