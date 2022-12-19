@@ -18,9 +18,7 @@ public class Charactor extends JPanel {
 	private int positionX;
 	private int positionY;
 	private int speed;
-	public int spriteCounter;
-	public int spriteNum ;
-    public String direction;
+
 
 	public void setHeight(int height) {
 		this.height = height;
@@ -61,24 +59,6 @@ public class Charactor extends JPanel {
 	public int getSpeed() {
 		return this.speed;
 	}
-	public void setSpriteCounter(int spriteCounter) {
-		this.spriteCounter = spriteCounter;
-	}
 
-	public int getSpriteCounter() {
-		return this.spriteCounter;
-	}
-	public void setSpriteNum(int spriteNum) {
-		this.spriteNum = spriteNum;
-	}
-	public int getSpriteNum() {
-		return this.spriteNum;
-	}
-	public void setDirection(String direction) {
-		this.direction = direction;
-	}
-	public String getDirection() {
-		return this.direction;
-	}
 }
 

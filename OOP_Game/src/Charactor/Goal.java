@@ -4,33 +4,27 @@
  */
 package Charactor;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import Display.GamePanel;
-
 /**
  *
  * @author pangpntt
  */
-public class Background {
-	private GamePanel gp;
-	private int numBackground;
+public class Goal extends Charactor {
 	private BufferedImage img;
-	private Player player;
-
-	public Background(GamePanel gp, Player player) {
-		this.gp = gp;
-
-		importImg();
-	}
-
+	
+    public Goal(int positionX, int positionY, int weight, int height) {
+    	this.setPositionX(positionX);
+    	this.setPositionY(positionY);
+    	this.setWeight(weight);
+    	this.setHeight(height);
+    }
 	private void importImg() {
-		InputStream importImg = getClass().getResourceAsStream("/Image/bg.png");
+		InputStream importImg = getClass().getResourceAsStream("/Image/Goal.png");
 		try {
 			img = ImageIO.read(importImg);
 			importImg.close();
@@ -39,9 +33,4 @@ public class Background {
 		}
 
 	}
-
-	public void Draw(Graphics g) {
-		g.drawImage(img, 0, 0, gp.screenWidth, gp.screenHeight, null);
-	}
-
 }

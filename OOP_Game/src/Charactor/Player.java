@@ -30,7 +30,9 @@ public class Player extends Charactor {
 	private BufferedImage[][] animations;
 	private Display.GamePanel gp;
 	private CharacterListener keyH;
-	BufferedImage image;
+	private int spriteCounter;
+	private int spriteNum;
+	public String direction;
 
 	public Player(Display.GamePanel gp, CharacterListener keyH) {
 		this.gp = gp;
@@ -123,10 +125,14 @@ public class Player extends Charactor {
 			this.setDirection("up");// direction = "up";
 		}
 	}
-
+	
 	public void Draw(Graphics2D g2) {
 		img = animations[0][0];
-		if (this.getDirection().equals("up")) {
+		if(gp.getNumBackground() == 5 && this.getPositionX() >= 1095) {
+			img = animations[0][5];
+			this.setPositionX(1095);
+		}
+		else if (this.getDirection().equals("up")) {
 			img = animations[0][0];
 		} else if (this.getDirection().equals("down")) {
 			img = animations[0][3];
@@ -143,18 +149,16 @@ public class Player extends Charactor {
 				img = animations[0][2];
 			}
 		}
-
 		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
-
 		if (gp.getJumping()) {
 			if (this.getPositionY() >= 400) {
 				System.out.println(this.getPositionY());
 				this.setPositionY(this.getPositionY() - 1);
-				
+
 			} else {
 				this.setPositionY(this.getPositionY() + 1);
 				System.out.println(this.getPositionY());
-				; 
+				;
 			}
 		}
 
@@ -178,5 +182,29 @@ public class Player extends Charactor {
 				System.exit(0);
 			}
 		}
+	}
+
+	public void setSpriteCounter(int spriteCounter) {
+		this.spriteCounter = spriteCounter;
+	}
+
+	public int getSpriteCounter() {
+		return this.spriteCounter;
+	}
+
+	public void setSpriteNum(int spriteNum) {
+		this.spriteNum = spriteNum;
+	}
+
+	public int getSpriteNum() {
+		return this.spriteNum;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	public String getDirection() {
+		return this.direction;
 	}
 }

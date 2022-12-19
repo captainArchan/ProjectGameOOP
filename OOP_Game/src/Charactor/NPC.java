@@ -26,16 +26,18 @@ public class NPC extends Charactor {
 	private String action;
 	private int round = 0;
 	private boolean isJump = true;
-	private int map;
+	private int summonNPC;
 
-	public NPC(GamePanel gp, int height, int weight, int positionX, int positionY, String action, int map) {
+
+	public NPC(GamePanel gp, int height, int weight, int positionX, int positionY, String action, int summonNPC) {
 		this.setHeight(height);
 		this.setWeight(weight);
 		this.setPositionX(positionX);
 		this.setPositionY(positionY);
 		this.action = action;
 		this.gp = gp;
-		this.map = map;
+		this.summonNPC = summonNPC;
+
 		importImgSlide();
 		importImgStand_Jump();
 
@@ -68,7 +70,7 @@ public class NPC extends Charactor {
 	}
 
 	public void Draw(Graphics2D g) {
-		if (this.action.equals("jump") && gp.getMap() == this.map) {
+		if (this.action.equals("jump") && this.summonNPC == gp.getNumBackground() ) {
 			img = animationJump;
 			if (this.getPositionY() >= 400 && this.isJump == true) {
 				this.round++;
@@ -95,15 +97,14 @@ public class NPC extends Charactor {
 				}
 			}
 
-		} else if (this.action.equals("slide") && gp.getMap() == this.map) {
+		} else if (this.action.equals("slide") && this.summonNPC == gp.getNumBackground()) {
 			img = animationSlide;
-		} else if (this.map != gp.getMap()) {
+		} else if (this.summonNPC != gp.getNumBackground()) {
 			img = null;
 		}
-
 		g.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
-
 	}
+
 
 	public void setTouchPlayer(boolean touchPlayer) {
 		this.touchPlayer = touchPlayer;

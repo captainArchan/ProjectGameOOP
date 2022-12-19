@@ -15,91 +15,114 @@ import Charactor.Background;
 import Charactor.NPC;
 import Charactor.Player;
 
-
 /**
  *
  * @author pangpntt
  */
-public class GamePanel extends JPanel implements Runnable{
-    final int originalTileSize = 16;
-    final int scale = 6;
-    public final int tileSize = originalTileSize * scale;
-    final int maxScreenCol = 13; 
-    final int maxScreenRow = 8;
-    public final int screenWidth = tileSize * maxScreenCol;
-    public final int screenHeight = tileSize * maxScreenRow;
-    
-    private CharacterListener keyH = new CharacterListener(this);
-    private Thread gameThread;
-	
-    int FPS = 60;
-    int playerY = 550;
-    private boolean jumping = false;
-    private long jumpingTime = 400;
-    private double drawInterval = 1000000000 / FPS;
-    private double delta = 0;
-    private long lastTime = System.nanoTime();
-    private long currentTime;
-    
-    private Player player = new Player(this, keyH);
-    private NPC npc1 = new NPC(this, 96, 96, 400, 550, "jump", 1);
-    private NPC npc2 = new NPC(this, 96, 96, 90, 550, "slide", 2);
-    private Background background = new Background(this, player);
-    private int numBackground = 1;
-    private final int finalLine = 1096;
-    
-    public GamePanel(){
-    	this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setDoubleBuffered(true);
-        this.addKeyListener(keyH);
-        this.setFocusable(true);
+public class GamePanel extends JPanel implements Runnable {
+	final int originalTileSize = 16;
+	final int scale = 6;
+	public final int tileSize = originalTileSize * scale;
+	final int maxScreenCol = 13;
+	final int maxScreenRow = 8;
+	public final int screenWidth = tileSize * maxScreenCol;
+	public final int screenHeight = tileSize * maxScreenRow;
 
-    
-    }
-    public void setJumping(boolean jumping) {
-    	this.jumping = jumping;
-    }
-    public boolean getJumping() {
-    	return this.jumping;
-    }
-    
-    public long getJumpingTime() {
-    	return this.jumpingTime;
-    }
-    
-    public void startGameThread(){
-        gameThread = new Thread(this);
-        gameThread.start();
-    }
-	@Override
-	public void run() {
-        while(gameThread != null){
-            currentTime = System.nanoTime();
-            delta += (currentTime - lastTime) / drawInterval;
-            lastTime = currentTime;
-            if(delta >= 1){
-            	update();
-            	repaint();
-            	delta--;
-            }
-        }
-		
+	private CharacterListener keyH = new CharacterListener(this);
+	private Thread gameThread;
+
+	int FPS = 60;
+	int playerY = 550;
+	private boolean jumping = false;
+	private long jumpingTime = 400;
+	private double drawInterval = 1000000000 / FPS;
+	private double delta = 0;
+	private long lastTime = System.nanoTime();
+	private long currentTime;
+
+	private Player player = new Player(this, keyH);
+	private NPC npc1 = new NPC(this, 96, 96, 400, 550, "jump", 1);
+	private NPC npc2 = new NPC(this, 96, 96, 90, 550, "slide", 2);
+	
+	
+	private Background background = new Background(this, player);
+	private int numBackground = 1;
+	private final int finalLine = 1096;
+	private final int startPositionX = 10;
+	private final int startPositionY = 550;
+
+	public GamePanel() {
+		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+		this.setDoubleBuffered(true);
+		this.addKeyListener(keyH);
+		this.setFocusable(true);
+
 	}
 
-	
-    public void update(){
-        player.move();
-        
-    }
+	public void setJumping(boolean jumping) {
+		this.jumping = jumping;
+	}
 
-	
+	public boolean getJumping() {
+		return this.jumping;
+	}
+
+	public long getJumpingTime() {
+		return this.jumpingTime;
+	}
+
+	public void startGameThread() {
+		gameThread = new Thread(this);
+		gameThread.start();
+	}
+
+	@Override
+	public void run() {
+		while (gameThread != null) {
+			currentTime = System.nanoTime();
+			delta += (currentTime - lastTime) / drawInterval;
+			lastTime = currentTime;
+			if (delta >= 1) {
+				update();
+				repaint();
+				delta--;
+			}
+		}
+
+	}
+
+	public void update() {
+		player.move();
+		checkBG();
+	}
+
+	private void checkBG() {
+		if (player.getPositionX() >= this.finalLine) {
+			if (this.getNumBackground() == 5) {
+				player.setPositionX(finalLine);
+			} else {
+				this.setNumBackground(this.getNumBackground() + 1);
+				player.setPositionX(startPositionX);
+				player.setPositionY(startPositionY);
+			}
+
+		} else if (player.getPositionX() < startPositionX - 1 && this.getNumBackground() > 1) {
+			player.setPositionX(finalLine);
+			this.setNumBackground(this.getNumBackground() - 1);
+		} else if (player.getPositionX() < 1) {
+			player.setPositionX(1);
+		}
+
+	}
+
 	public int getNumBackground() {
 		return this.numBackground;
 	}
+
 	public void setNumBackground(int numBackground) {
 		this.numBackground = numBackground;
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
