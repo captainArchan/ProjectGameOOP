@@ -46,8 +46,8 @@ public class GamePanel extends JPanel implements Runnable {
 
 	private Player player = new Player(this, keyH);
 	private NPC npc1 = new NPC(this, player,150, 150, 350, 600, "jump", 1);
-	private Pit pit1 = new Pit(this, player, 650, 525, 200, 200, 1);
-	private NPC npc2 = new NPC(this, player,150, 150, 950, 600, "slide", 1);
+	private Pit pit1 = new Pit(this, player, 700, 525, 200, 200, 1);
+	private NPC npc2 = new NPC(this, player,150, 150, 1000, 600, "slide", 1);
 	private NPC npc3 = new NPC(this, player,150, 150, 350, 600, "jump", 2);
 	private Pit pit2 = new Pit(this, player, 900, 525, 200, 200, 2);
 	private Pit pit3 = new Pit(this, player, 300, 525, 200, 200, 3);
@@ -56,8 +56,8 @@ public class GamePanel extends JPanel implements Runnable {
 	private NPC npc5 = new NPC(this, player,150, 150, 300, 600, "jump", 4);
 	private NPC npc6 = new NPC(this,player,150, 150, 600, 600, "slide", 4);
 	private Pit pit5 = new Pit(this, player,950, 525, 200, 200, 4);
-	private NPC npc7 = new NPC(this, player,150, 150, 300, 600, "jump", 5);
-	private NPC npc8 = new NPC(this, player,150, 150, 600, 600, "jump", 5);
+	private NPC npc7 = new NPC(this, player,150, 150, 350, 600, "jump", 5);
+	private NPC npc8 = new NPC(this, player,150, 150, 700, 600, "jump", 5);
 	private Goal goal = new Goal(this, 1000, 450, 400, 400, 5);
 
 	private Background background = new Background(this, player);
@@ -106,18 +106,19 @@ public class GamePanel extends JPanel implements Runnable {
 		player.move();
 		checkBG();
 		npc1.checkTouch();
-		pit1.checkTouch();
 		npc2.checkTouch();
 		npc3.checkTouch();
-		pit2.checkTouch();
-		pit3.checkTouch();
-		pit4.checkTouch();
 		npc4.checkTouch();
 		npc5.checkTouch();
 		npc6.checkTouch();
-		pit5.checkTouch();
 		npc7.checkTouch();
 		npc8.checkTouch();
+		pit1.checkTouch();
+		pit2.checkTouch();
+		pit3.checkTouch();
+		pit4.checkTouch();
+		pit5.checkTouch();
+
 	}
 
 	private void checkBG() {
