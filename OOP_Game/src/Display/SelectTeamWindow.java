@@ -20,11 +20,19 @@ import Action.DisplayListener;
  * @author pangpntt
  */
 public class SelectTeamWindow extends JPanel {
+	private final int originalTileSize = 16;
+	private final int scale = 6;
+	private final int tileSize = originalTileSize * scale;
+	private int maxScreenCol = 13;
+	private int maxScreenRow = 8;
+	private final int screenWidth = tileSize * maxScreenCol;
+	private final int screenHeight = tileSize * maxScreenRow;
+	
 
     private JPanel jpteam, jpback, jptxt, jpSelect;
     private JButton buttonGermany, buttonBrazil, buttonArgentina, back;
     private JLabel title, germany, brazil, argentina;
-    private BufferedImage PicGer, PicBra, PicArgen, bg;
+    private BufferedImage PicGer, PicBra, PicArgen;
     private JFrame jf;
     //private Graphics g;
 
@@ -34,18 +42,16 @@ public class SelectTeamWindow extends JPanel {
         jpback = new JPanel();
         jptxt = new JPanel();
         jpSelect = new JPanel();
-        buttonGermany = new JButton("");
-        buttonBrazil = new JButton("");
-        buttonArgentina = new JButton("");
+
         back = new JButton("BACK");
+        back.addActionListener(new DisplayListener(jf));
+        
         title = new JLabel("SELECT", SwingConstants.CENTER);
         title.setBorder(new EmptyBorder(70, 0, 0, 0));
         germany = new JLabel(" GERMANY   ");
         brazil = new JLabel("BRAZIL  ");
         argentina = new JLabel("ARGENTINA");
         
-        back.addActionListener(new DisplayListener(jf));
-
         Color color = new Color(236, 155, 91);
         Color color2 = new Color(248, 157, 19);
         title.setForeground(color2);
@@ -74,8 +80,14 @@ public class SelectTeamWindow extends JPanel {
         buttonGermany = new JButton(new ImageIcon(new ImageIcon(PicGer).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
         buttonBrazil = new JButton(new ImageIcon(new ImageIcon(PicBra).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
         buttonArgentina = new JButton(new ImageIcon(new ImageIcon(PicArgen).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
+        buttonGermany.addActionListener(new DisplayListener(jf));
+        buttonGermany.setActionCommand("Germany");
+        buttonBrazil.addActionListener(new DisplayListener(jf));
+        buttonBrazil.setActionCommand("Brazil");
+        buttonArgentina.addActionListener(new DisplayListener(jf));
+        buttonArgentina.setActionCommand("Argentina");
         this.setLayout(new BorderLayout());
-
+        
         jpteam.setLayout(new FlowLayout()); 
         jptxt.setLayout(new FlowLayout());
         jpback.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -93,7 +105,7 @@ public class SelectTeamWindow extends JPanel {
         this.add(title, BorderLayout.NORTH);
         this.add(jpSelect);
         this.add(jpback, BorderLayout.SOUTH);
-        this.setPreferredSize(new Dimension(1240, 750));
+        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 
         this.setBackground(new java.awt.Color(143, 29, 20));
         jptxt.setBackground(new java.awt.Color(143, 29, 20));

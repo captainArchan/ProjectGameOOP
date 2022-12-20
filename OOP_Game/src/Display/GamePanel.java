@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Action.CharacterListener;
@@ -19,13 +21,14 @@ import Charactor.Player;
  * @author pangpntt
  */
 public class GamePanel extends JPanel implements Runnable {
-	final int originalTileSize = 16;
-	final int scale = 6;
-	public final int tileSize = originalTileSize * scale;
-	final int maxScreenCol = 13;
-	final int maxScreenRow = 8;
-	public final int screenWidth = tileSize * maxScreenCol;
-	public final int screenHeight = tileSize * maxScreenRow;
+	private JFrame jf;
+	private final int originalTileSize = 16;
+	private final int scale = 6;
+	private final int tileSize = originalTileSize * scale;
+	private int maxScreenCol = 13;
+	private int maxScreenRow = 8;
+	private final int screenWidth = tileSize * maxScreenCol;
+	private final int screenHeight = tileSize * maxScreenRow;
 
 	private CharacterListener keyH = new CharacterListener(this);
 	private Thread gameThread;
@@ -45,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private final int startPositionY = 550;
 
 	private Player player = new Player(this, keyH);
-	private NPC npc1 = new NPC(this, player,150, 150, 350, 600, "jump", 1);
+	private NPC npc1;
 	private Pit pit1 = new Pit(this, player, 700, 525, 200, 200, 1);
 	private NPC npc2 = new NPC(this, player,150, 150, 1000, 600, "slide", 1);
 	private NPC npc3 = new NPC(this, player,150, 150, 350, 600, "jump", 2);
@@ -59,15 +62,30 @@ public class GamePanel extends JPanel implements Runnable {
 	private NPC npc7 = new NPC(this, player,150, 150, 350, 600, "jump", 5);
 	private NPC npc8 = new NPC(this, player,150, 150, 700, 600, "jump", 5);
 	private Goal goal = new Goal(this, 1000, 450, 400, 400, 5);
-
 	private Background background = new Background(this, player);
+	private String nationality;
 
-	public GamePanel() {
+	public GamePanel(JFrame jf, String nationality) {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
+		System.out.println(keyH);
 		this.setFocusable(true);
-
+		this.nationality = nationality;
+		setNPC();
+		
+		
+	}
+	private void setNPC() {
+		npc1 = new NPC(this, player,150, 150, 350, 600, "jump", 1);
+	}
+	
+	public int getScreenHeight() {
+		return this.screenHeight;
+	}
+	
+	public int getScreenWidth() {
+		return this.screenWidth;
 	}
 
 	public void setJumping(boolean jumping) {
@@ -86,6 +104,9 @@ public class GamePanel extends JPanel implements Runnable {
 		gameThread = new Thread(this);
 		gameThread.start();
 	}
+	public String getNationality() {
+		return this.nationality;
+	}
 
 	@Override
 	public void run() {
@@ -103,7 +124,9 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
+
 		player.move();
+		
 		checkBG();
 		npc1.checkTouch();
 		npc2.checkTouch();
@@ -125,6 +148,7 @@ public class GamePanel extends JPanel implements Runnable {
 		if (player.getPositionX() >= this.finalLine) {
 			if (this.getNumBackground() == 5) {
 				player.setPositionX(finalLine);
+				
 			} else {
 				this.setNumBackground(this.getNumBackground() + 1);
 				player.setPositionX(startPositionX);

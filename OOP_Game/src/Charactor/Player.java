@@ -36,8 +36,10 @@ public class Player extends Charactor {
 	private int numStartY = 550;
 
 	public Player(Display.GamePanel gp, CharacterListener keyH) {
+
 		this.gp = gp;
 		this.keyH = keyH;
+		System.out.println(this.keyH);
 		setDefaultValues();
 		importImg();
 		lodeImage();
@@ -89,6 +91,7 @@ public class Player extends Charactor {
 	}
 
 	public void move() {
+		System.out.println();
 		if (this.getStatus() == false) {
 			this.setDirection("die");
 		} else if (keyH.getJumpPressed() == true || keyH.getRightPressed() == true || keyH.getLeftPressed() == true
@@ -157,12 +160,12 @@ public class Player extends Charactor {
 		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 		if (gp.getJumping()) {
 			if (this.getPositionY() >= 200) {
-				System.out.println(this.getPositionY());
+				
 				this.setPositionY(this.getPositionY() - 1);
 
 			} else {
 				this.setPositionY(this.getPositionY() + 1);
-				System.out.println(this.getPositionY());
+				
 				;
 			}
 		}

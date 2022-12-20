@@ -12,18 +12,19 @@ public class CharacterListener implements KeyListener{
 	
 	public CharacterListener(GamePanel gp) {
 		this.gp = gp;
+
 	}
 	
 	
     @Override
     public void keyTyped(KeyEvent e) {
-        
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_W){
+        	System.out.println("1");
             jumpPressed = true;
         }
         if(code == KeyEvent.VK_D){
@@ -40,6 +41,7 @@ public class CharacterListener implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
+    	System.out.println("1");
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_W){
             jumpPressed = false;

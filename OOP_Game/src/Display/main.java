@@ -12,7 +12,7 @@ public class main {
         window.setTitle("Worldcup");
         
         
-        GamePanel gamePanel = new GamePanel();
+        GamePanel gamePanel = new GamePanel(window, "Brazil");
         window.add(gamePanel);
         window.pack();
        

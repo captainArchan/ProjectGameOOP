@@ -28,6 +28,7 @@ public class Background {
 	private Player player;
 	public Background(GamePanel gp, Player player) {
 		this.gp = gp;
+		this.player = player;
 		importImg();
 
 	}
@@ -52,19 +53,19 @@ public class Background {
 	}
 	public void Draw(Graphics g) {
 		if(gp.getNumBackground()== 1) {
-			g.drawImage(img1, 0, 0, gp.screenWidth, gp.screenHeight, null);
+			g.drawImage(img1, 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
 		}
 		else if(gp.getNumBackground()== 2) {
-			g.drawImage(img2, 0, 0, gp.screenWidth, gp.screenHeight, null);
+			g.drawImage(img2, 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
 		}
 		else if(gp.getNumBackground()== 3) {
-			g.drawImage(img3, 0, 0, gp.screenWidth, gp.screenHeight, null);
+			g.drawImage(img3, 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
 		}
 		else if(gp.getNumBackground()== 4) {
-			g.drawImage(img4, 0, 0, gp.screenWidth, gp.screenHeight, null);
+			g.drawImage(img4, 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
 		}
 		else if(gp.getNumBackground()== 5) {
-			g.drawImage(img5, 0, 0, gp.screenWidth, gp.screenHeight, null);
+			g.drawImage(img5, 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
 		}
 
 	}

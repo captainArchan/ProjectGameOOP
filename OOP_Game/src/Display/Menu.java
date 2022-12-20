@@ -21,6 +21,13 @@ import java.io.File;
  * @author pangpntt
  */
 public class Menu extends JPanel {
+	private final int originalTileSize = 16;
+	private final int scale = 6;
+	private final int tileSize = originalTileSize * scale;
+	private int maxScreenCol = 13;
+	private int maxScreenRow = 8;
+	private final int screenWidth = tileSize * maxScreenCol;
+	private final int screenHeight = tileSize * maxScreenRow;
 
 	private JPanel jpButtonStart, jpButtonSystems, jpButtonExit, jpbutton, jpimg, jp;
 	private JButton buttonStart, buttonSystems, buttonExit;
@@ -90,7 +97,7 @@ public class Menu extends JPanel {
 		this.add(jp, BorderLayout.NORTH);
 		this.add(jpbutton);
 		this.add(jpButtonExit, BorderLayout.SOUTH);
-		this.setPreferredSize(new Dimension(1240, 750));
+		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 	}
 
 
