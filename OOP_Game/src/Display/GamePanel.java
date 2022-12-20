@@ -22,8 +22,8 @@ public class GamePanel extends JPanel implements Runnable {
 	private CharacterListener keyH = new CharacterListener();
 	private Thread gameThread;
 
-	int FPS = 60;
-	int playerY = 550;
+	private final int FPS = 60;
+	private final int playerY = 550;
 	private boolean jumping = false;
 	private long jumpingTime = 400;
 	private double drawInterval = 1000000000 / FPS;
