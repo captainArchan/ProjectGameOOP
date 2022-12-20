@@ -32,8 +32,7 @@ public class SystemsWindow extends JFrame {
 	private JFrame jf;
 	private Clip soundTheme;
 	private Window window;
-        private float previousVolumn = 0;
-        private float currentVolumn = 0;
+        private float currentVolume = 0;
 	public SystemsWindow(Window window) {
 		this.window = window;
 		this.soundTheme = this.window.getSound();
@@ -49,9 +48,9 @@ public class SystemsWindow extends JFrame {
                 slider.addChangeListener(new ChangeListener() {
                     @Override
                     public void stateChanged(ChangeEvent e) {
-                        currentVolumn = slider.getValue();
+                        currentVolume = slider.getValue();
                         FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
-                        volume.setValue(currentVolumn);
+                        volume.setValue(currentVolume);
                     }
                 });
 
@@ -106,21 +105,21 @@ public class SystemsWindow extends JFrame {
 	}
         
         public void volumnUp(){
-            currentVolumn += 1.0f;
-            if(currentVolumn > 6.0f){
-                currentVolumn = 6.0f;
+            currentVolume += 1.0f;
+            if(currentVolume > 6.0f){
+                currentVolume = 6.0f;
             }
             FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
-            volume.setValue(currentVolumn);
+            volume.setValue(currentVolume);
         }
         
         public void volumnDown(){
-            currentVolumn -= 1.0f;
-            if(currentVolumn < -80.0f){
-                currentVolumn = -80.0f;
+            currentVolume -= 1.0f;
+            if(currentVolume < -80.0f){
+                currentVolume = -80.0f;
             }
             FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
-            volume.setValue(currentVolumn);
+            volume.setValue(currentVolume);
             
         }
         
