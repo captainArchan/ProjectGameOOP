@@ -24,7 +24,6 @@ public class CharacterListener implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_W){
-        	System.out.println("1");
             jumpPressed = true;
         }
         if(code == KeyEvent.VK_D){

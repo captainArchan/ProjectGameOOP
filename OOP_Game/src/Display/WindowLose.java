@@ -12,26 +12,26 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Action.DisplayListener;
+
 /**
  *
  * @author pangpntt
  */
-public class WindowLose extends extraWindow {
-    private JFrame fr;
-    private JInternalFrame jpLose;
-    private JDesktopPane dp;
+public class WindowLose extends JPanel {
     private JPanel jptxt1, jptxt2, jpbutton;
     private JButton buttonRestart, buttonBackToMenu;
     private JLabel textLose, txt2;
-    public WindowLose(){
-        fr = new JFrame();
-        jpLose = new JInternalFrame("lose", true, true, true, true);
-        dp = new JDesktopPane();
+    private String nation;
+    public WindowLose(JFrame jf, String nation){
+    	this.nation = nation;
         jptxt1 = new JPanel();
         jpbutton = new JPanel();
         jptxt2 = new JPanel();
         buttonRestart = new JButton("RESTART");
         buttonBackToMenu = new JButton("MENU");
+        buttonBackToMenu.addActionListener(new DisplayListener(jf, this));
+        buttonRestart.addActionListener(new DisplayListener(jf, this));
         textLose = new JLabel("GAME", SwingConstants.CENTER);
         txt2 = new JLabel("OVER", SwingConstants.CENTER);
         
@@ -42,7 +42,7 @@ public class WindowLose extends extraWindow {
         buttonRestart.setFont(myFont2);
         buttonBackToMenu.setFont(myFont2);
         
-        jpLose.setBackground(new java.awt.Color(27, 18, 15));
+        this.setBackground(new java.awt.Color(27, 18, 15));
         jptxt1.setBackground(new java.awt.Color(27, 18, 15));
         jptxt2.setBackground(new java.awt.Color(27, 18, 15));
         jpbutton.setBackground(new java.awt.Color(27, 18, 15));
@@ -56,8 +56,7 @@ public class WindowLose extends extraWindow {
         buttonRestart.setForeground(color2);
         buttonBackToMenu.setForeground(color2);
           
-        fr.setLayout(new BorderLayout());
-        jpLose.setLayout(new GridLayout(3,1));
+        this.setLayout(new GridLayout(3,1));
         jptxt1.setLayout(new BorderLayout());
         jptxt2.setLayout(new BorderLayout());
         jpbutton.setLayout(new FlowLayout());
@@ -65,23 +64,12 @@ public class WindowLose extends extraWindow {
         jptxt2.add(txt2);
         jpbutton.add(buttonRestart);
         jpbutton.add(buttonBackToMenu);
-        jpLose.add(jptxt1);
-        jpLose.add(jptxt2);
-        jpLose.add(jpbutton);
+        this.add(jptxt1);
+        this.add(jptxt2);
+        this.add(jpbutton);
         
-        dp.add(jpLose);
-        fr.add(dp);
-        
-        jpLose.setSize(500, 380);
-        jpLose.setLocation(350, 150);
-        jpLose.setVisible(true);
-        fr.setSize(1240, 750);
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setLocationRelativeTo(null);
-        fr.setVisible(true);
     }
-    
-    public static void main(String[] args) {
-        new WindowLose();
+    public String getNation() {
+    	return this.nation;
     }
 }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Calendar;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private int maxScreenRow = 8;
 	private final int screenWidth = tileSize * maxScreenCol;
 	private final int screenHeight = tileSize * maxScreenRow;
+	private long time;
 
 	private CharacterListener keyH = new CharacterListener(this);
 	private Thread gameThread;
@@ -47,43 +49,55 @@ public class GamePanel extends JPanel implements Runnable {
 	private final int startPositionX = 10;
 	private final int startPositionY = 550;
 
-	private Player player = new Player(this, keyH);
+	private Player player;
 	private NPC npc1;
-	private Pit pit1 = new Pit(this, player, 700, 525, 200, 200, 1);
-	private NPC npc2 = new NPC(this, player,150, 150, 1000, 600, "slide", 1);
-	private NPC npc3 = new NPC(this, player,150, 150, 350, 600, "jump", 2);
-	private Pit pit2 = new Pit(this, player, 900, 525, 200, 200, 2);
-	private Pit pit3 = new Pit(this, player, 300, 525, 200, 200, 3);
-	private NPC npc4 = new NPC(this, player,150, 150, 600, 600, "jump", 3);
-	private Pit pit4 = new Pit(this, player,950, 525, 200, 200, 3);
-	private NPC npc5 = new NPC(this, player,150, 150, 300, 600, "jump", 4);
-	private NPC npc6 = new NPC(this,player,150, 150, 600, 600, "slide", 4);
-	private Pit pit5 = new Pit(this, player,950, 525, 200, 200, 4);
-	private NPC npc7 = new NPC(this, player,150, 150, 350, 600, "jump", 5);
-	private NPC npc8 = new NPC(this, player,150, 150, 700, 600, "jump", 5);
+	private Pit pit1;
+	private NPC npc2;
+	private NPC npc3;
+	private Pit pit2 ;
+	private Pit pit3 ;
+	private NPC npc4 ;
+	private Pit pit4 ;
+	private NPC npc5 ;
+	private NPC npc6 ;
+	private Pit pit5;
+	private NPC npc7 ;
+	private NPC npc8 ;
 	private Goal goal = new Goal(this, 1000, 450, 400, 400, 5);
 	private Background background = new Background(this, player);
 	private String nationality;
 
 	public GamePanel(JFrame jf, String nationality) {
+		this.jf = jf;
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
-		System.out.println(keyH);
-		this.setFocusable(true);
 		this.nationality = nationality;
+		player = new Player(this, keyH);
 		setNPC();
-		
-		
+		this.setFocusable(true);
 	}
+
 	private void setNPC() {
-		npc1 = new NPC(this, player,150, 150, 350, 600, "jump", 1);
+		npc1 = new NPC(this, player, 150, 150, 350, 600, "jump", 1);
+		pit1 = new Pit(this, player, 700, 525, 200, 200, 1);
+		npc2 = new NPC(this, player, 150, 150, 1000, 600, "slide", 1);
+		npc3 = new NPC(this, player, 150, 150, 350, 600, "jump", 2);
+		pit2 = new Pit(this, player, 900, 525, 200, 200, 2);
+		pit3 = new Pit(this, player, 300, 525, 200, 200, 3);
+		npc4 = new NPC(this, player, 150, 150, 600, 600, "jump", 3);
+		pit4 = new Pit(this, player, 950, 525, 200, 200, 3);
+		npc5 = new NPC(this, player, 150, 150, 300, 600, "jump", 4);
+		npc6 = new NPC(this, player, 150, 150, 600, 600, "slide", 4);
+		pit5 = new Pit(this, player, 950, 525, 200, 200, 4);
+		npc7 = new NPC(this, player, 150, 150, 350, 600, "jump", 5);
+		npc8 = new NPC(this, player, 150, 150, 700, 600, "jump", 5);
 	}
-	
+
 	public int getScreenHeight() {
 		return this.screenHeight;
 	}
-	
+
 	public int getScreenWidth() {
 		return this.screenWidth;
 	}
@@ -103,9 +117,13 @@ public class GamePanel extends JPanel implements Runnable {
 	public void startGameThread() {
 		gameThread = new Thread(this);
 		gameThread.start();
+
 	}
+
 	public String getNationality() {
+		System.out.println(this.nationality);
 		return this.nationality;
+
 	}
 
 	@Override
@@ -120,14 +138,20 @@ public class GamePanel extends JPanel implements Runnable {
 				delta--;
 			}
 		}
-
 	}
 
 	public void update() {
-
 		player.move();
-		
 		checkBG();
+		if (player.getDirection().equals("die")) {
+			new ChangePanel(jf, player.getDirection(), this.getNationality());
+			gameThread.stop();
+		}
+		else if (player.getDirection().equals("win")) {
+			new ChangePanel(jf, player.getDirection(), this.getNationality());
+			gameThread.stop();
+		}
+
 		npc1.checkTouch();
 		npc2.checkTouch();
 		npc3.checkTouch();
@@ -148,7 +172,7 @@ public class GamePanel extends JPanel implements Runnable {
 		if (player.getPositionX() >= this.finalLine) {
 			if (this.getNumBackground() == 5) {
 				player.setPositionX(finalLine);
-				
+
 			} else {
 				this.setNumBackground(this.getNumBackground() + 1);
 				player.setPositionX(startPositionX);

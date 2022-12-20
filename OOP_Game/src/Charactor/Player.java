@@ -24,7 +24,7 @@ import test.KeyHandler;
  * @author pangpntt
  */
 public class Player extends Charactor {
-	private String nationality;
+	private int nationality;
 	private boolean status = true;
 	private BufferedImage img;
 	private BufferedImage[][] animations;
@@ -36,13 +36,12 @@ public class Player extends Charactor {
 	private int numStartY = 550;
 
 	public Player(Display.GamePanel gp, CharacterListener keyH) {
-
 		this.gp = gp;
 		this.keyH = keyH;
-		System.out.println(this.keyH);
 		setDefaultValues();
 		importImg();
 		lodeImage();
+		this.setNationality(gp.getNationality());
 	}
 
 	private void importImg() {
@@ -75,10 +74,20 @@ public class Player extends Charactor {
 	}
 
 	public void setNationality(String nationality) {
-		this.nationality = nationality;
+		System.out.println(nationality);
+		if (nationality == null) {
+			this.nationality = 0;
+		} else if (nationality.equals("Argentina")) {
+			this.nationality = 0;
+		} else if (nationality.equals("Brazil")) {
+			this.nationality = 1;
+		} else if (nationality.equals("Germany")) {
+			this.nationality = 2;
+		}
+
 	}
 
-	public String getNationality() {
+	public int getNationality() {
 		return this.nationality;
 	}
 
@@ -94,6 +103,7 @@ public class Player extends Charactor {
 		System.out.println();
 		if (this.getStatus() == false) {
 			this.setDirection("die");
+
 		} else if (keyH.getJumpPressed() == true || keyH.getRightPressed() == true || keyH.getLeftPressed() == true
 				|| keyH.getSlidePressed() == true) {
 
@@ -132,40 +142,42 @@ public class Player extends Charactor {
 	}
 
 	public void Draw(Graphics2D g2) {
-		img = animations[0][0];
+
+		img = animations[this.nationality][0];
 		if (this.getDirection().equals("die")) {
-			img = animations[0][4];
+			img = animations[this.nationality][4];
 		}
 
 		else if (gp.getNumBackground() == 5 && this.getPositionX() >= 1030) {
-			img = animations[0][5];
+			img = animations[this.nationality][5];
 			this.setPositionX(1045);
+			this.setDirection("win");
 		} else if (this.getDirection().equals("up")) {
-			img = animations[0][0];
+			img = animations[this.nationality][0];
 		} else if (this.getDirection().equals("down")) {
-			img = animations[0][3];
+			img = animations[this.nationality][3];
 		} else if (this.getDirection().equals("left")) {
 			if (this.getSpriteNum() == 1) {
-				img = animations[0][1];
+				img = animations[this.nationality][1];
 			} else if (this.getSpriteNum() == 2) {
-				img = animations[0][2];
+				img = animations[this.nationality][2];
 			}
 		} else if (this.getDirection().equals("right")) {
 			if (this.getSpriteNum() == 1) {
-				img = animations[0][1];
+				img = animations[this.nationality][1];
 			} else if (this.getSpriteNum() == 2) {
-				img = animations[0][2];
+				img = animations[this.nationality][2];
 			}
 		}
 		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 		if (gp.getJumping()) {
 			if (this.getPositionY() >= 200) {
-				
+
 				this.setPositionY(this.getPositionY() - 1);
 
 			} else {
 				this.setPositionY(this.getPositionY() + 1);
-				
+
 				;
 			}
 		}

@@ -16,7 +16,7 @@ public class Window {
     private JInternalFrame windowWin, windowLost, windowPause;
     private GamePanel game;
     private JFrame jf;
-    
+
     
     public Window(){
     	JFrame jf = new JFrame();
@@ -31,7 +31,7 @@ public class Window {
   
     public static void main(String[] args) {
 			new Window();
-
-
     }
+    
+
 }
