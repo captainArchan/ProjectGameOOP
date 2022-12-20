@@ -1,40 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Display;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import javax.print.DocFlavor.URL;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import javax.swing.*;
-
 import Action.DisplayListener;
 import Action.SoundListener;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-/**
- *
- * @author pangpntt
- */
 public class SystemsWindow extends JFrame {
 	private JPanel jpsound, jpback, jpSlider, jpSystems, jpEmtry;
 	private JLabel sound, imgSound;
 	private JButton back;
 	private JSlider slider;
 	private BufferedImage wPic;
-	private JFrame jf;
 	private Clip soundTheme;
 	private Window window;
-	private float currentVolume = 0;
 
 	public SystemsWindow(Window window) {
 		this.window = window;
@@ -97,10 +80,9 @@ public class SystemsWindow extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
+
 	public int getSliderValue() {
 		return slider.getValue();
 	}
-
-
 
 }

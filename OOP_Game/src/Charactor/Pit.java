@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Charactor;
 
 import java.awt.Graphics2D;
@@ -13,10 +10,6 @@ import javax.imageio.ImageIO;
 
 import Display.GamePanel;
 
-/**
- *
- * @author pangpntt
- */
 public class Pit extends Charactor {
 	private int numOfBackground;
 	private BufferedImage img;
@@ -48,7 +41,6 @@ public class Pit extends Charactor {
 	public void Draw(Graphics2D g2) {
 		if (gp.getNumBackground() == this.numOfBackground) {
 			g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
-
 		}
 	}
 
@@ -56,9 +48,6 @@ public class Pit extends Charactor {
 		if (((player.getPositionX() <= this.getPositionX() + 120 && player.getPositionX() >= this.getPositionX() - 130)
 				&& (player.getPositionY() == 550)) && (this.numOfBackground == gp.getNumBackground())) {
 			player.setStatus(false);
-			System.out.println(player.getPositionX());
 		}
-
 	}
-
 }

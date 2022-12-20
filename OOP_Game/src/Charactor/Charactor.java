@@ -1,24 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Charactor;
 
-import java.awt.image.BufferedImage;
+package Charactor;
 
 import javax.swing.JPanel;
 
-/**
- *
- * @author pangpntt
- */
 public class Charactor extends JPanel {
 	private int height;
 	private int width;
 	private int positionX;
 	private int positionY;
 	private int speed;
-
 
 	public void setHeight(int height) {
 		this.height = height;
@@ -61,4 +51,3 @@ public class Charactor extends JPanel {
 	}
 
 }
-

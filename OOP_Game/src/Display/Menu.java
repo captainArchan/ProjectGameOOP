@@ -1,26 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Display;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import Action.DisplayListener;
-import java.io.File;
 
-/**
- *
- * @author pangpntt
- */
 public class Menu extends JPanel {
 	private final int originalTileSize = 16;
 	private final int scale = 6;
@@ -29,12 +15,10 @@ public class Menu extends JPanel {
 	private int maxScreenRow = 8;
 	private final int screenWidth = tileSize * maxScreenCol;
 	private final int screenHeight = tileSize * maxScreenRow;
-
 	private JPanel jpButtonStart, jpButtonSystems, jpButtonExit, jpbutton, jpimg, jp;
 	private JButton buttonStart, buttonSystems, buttonExit;
 	private JLabel title, img;
 	ImageIcon icon = new ImageIcon("/ProjectGameOOP/OOP_Game/src/Image/Argen_win.png");;
-	private Clip sound;
 	private Window window;
 
 	public Menu(Window window) {

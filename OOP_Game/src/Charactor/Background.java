@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Charactor;
 
 import java.awt.Graphics;
@@ -13,25 +10,17 @@ import javax.imageio.ImageIO;
 
 import Display.GamePanel;
 
-/**
- *
- * @author pangpntt
- */
 public class Background {
 	private GamePanel gp;
-	private int numBackground;
 	private BufferedImage img1;
 	private BufferedImage img2;
 	private BufferedImage img3;
 	private BufferedImage img4;
 	private BufferedImage img5;
-	private Player player;
-	public Background(GamePanel gp, Player player) {
+	public Background(GamePanel gp) {
 		this.gp = gp;
-		this.player = player; 
 		importImg();
 	}
-
 	private void importImg() {
 		InputStream importImg1 = getClass().getResourceAsStream("/Image/bg1.png");
 		InputStream importImg2 = getClass().getResourceAsStream("/Image/bg2.png");
@@ -48,7 +37,6 @@ public class Background {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	public void Draw(Graphics g) {
 		if(gp.getNumBackground()== 1) {

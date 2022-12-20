@@ -15,7 +15,6 @@ public class SoundListener implements ChangeListener{
 		this.soundTheme = soundTheme;
 		this.systemsWindow = systemsWindow;
 	}
-
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		currentVolume = this.systemsWindow.getSliderValue();

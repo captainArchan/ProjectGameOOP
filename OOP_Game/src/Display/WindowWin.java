@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Display;
 
 import java.awt.*;
@@ -9,17 +6,13 @@ import javax.swing.*;
 
 import Action.DisplayListener;
 
-/**
- *
- * @author pangpntt
- */
 public class WindowWin extends JPanel{
     private JPanel jptxt, jpMenu;
     private JButton buttonBackToMenu;
     private JLabel textWin;
     private Window window;
     public WindowWin(Window window){ 
-    	this.window = window;
+    	this.window = window; 
         jptxt = new JPanel();
         jpMenu = new JPanel();
         buttonBackToMenu = new JButton("MENU");
@@ -49,8 +42,6 @@ public class WindowWin extends JPanel{
         jptxt.add(textWin);
         jptxt.add(jpMenu);
         this.add(jptxt);
-
-
 
     }
     

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Charactor;
 
 import java.awt.Graphics2D;
@@ -13,13 +10,8 @@ import javax.imageio.ImageIO;
 
 import Display.GamePanel;
 
-/**
- *
- * @author pangpntt
- */
 public class Goal extends Charactor {
 	private BufferedImage img;
-	private int lastStage = 5;
 	private GamePanel gp;
 	private int summon;
     public Goal(GamePanel gp, int positionX, int positionY, int weight, int height, int summon) {

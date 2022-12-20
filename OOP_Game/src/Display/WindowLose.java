@@ -1,28 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Display;
 
 import java.awt.*;
-
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import Action.DisplayListener;
 
-/**
- *
- * @author pangpntt
- */
 public class WindowLose extends JPanel {
     private JPanel jptxt1, jptxt2, jpbutton;
     private JButton buttonRestart, buttonBackToMenu;
     private JLabel textLose, txt2;
-    private String nation;
+    private String nation; 
     public WindowLose(Window window, String nation){
     	this.nation = nation;
         jptxt1 = new JPanel();

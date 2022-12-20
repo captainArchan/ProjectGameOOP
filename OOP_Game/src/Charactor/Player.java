@@ -1,28 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Charactor;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-
 import Action.CharacterListener;
-import test.GamePanel;
-import test.KeyHandler;
 
-/**
- *
- * @author pangpntt
- */
 public class Player extends Charactor {
 	private int nationality;
 	private boolean status = true;
@@ -74,7 +59,6 @@ public class Player extends Charactor {
 	}
 
 	public void setNationality(String nationality) {
-		System.out.println(nationality);
 		if (nationality == null) {
 			this.nationality = 0;
 		} else if (nationality.equals("Argentina")) {
@@ -100,7 +84,6 @@ public class Player extends Charactor {
 	}
 
 	public void move() {
-		System.out.println();
 		if (this.getStatus() == false) {
 			this.setDirection("die");
 
@@ -147,7 +130,7 @@ public class Player extends Charactor {
 		if (this.getDirection().equals("die")) {
 			img = animations[this.nationality][4];
 		}
- 
+
 		else if (gp.getNumBackground() == 5 && this.getPositionX() >= 1030) {
 			img = animations[this.nationality][5];
 			this.setPositionX(1045);
@@ -172,16 +155,12 @@ public class Player extends Charactor {
 		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
 		if (gp.getJumping()) {
 			if (this.getPositionY() >= 200) {
-
 				this.setPositionY(this.getPositionY() - 1);
-
 			} else {
 				this.setPositionY(this.getPositionY() + 1);
-
 				;
 			}
 		}
-
 		if (this.getPositionY() != numStartY && !gp.getJumping()) {
 			this.setPositionY(this.getPositionY() + 1);
 			;

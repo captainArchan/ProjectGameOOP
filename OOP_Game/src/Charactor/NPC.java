@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Charactor;
 
 import java.awt.Graphics2D;
@@ -13,12 +10,7 @@ import javax.imageio.ImageIO;
 
 import Display.GamePanel;
 
-/**
- *
- * @author pangpntt
- */
 public class NPC extends Charactor {
-	private int stage;
 	private boolean touchPlayer;
 	private GamePanel gp;
 	private BufferedImage img;
@@ -29,7 +21,8 @@ public class NPC extends Charactor {
 	private int summonNPC;
 	private Player player;
 
-	public NPC(GamePanel gp,Player player,int height, int weight, int positionX, int positionY, String action, int summonNPC) {
+	public NPC(GamePanel gp, Player player, int height, int weight, int positionX, int positionY, String action,
+			int summonNPC) {
 		this.setHeight(height);
 		this.setWeight(weight);
 		this.setPositionX(positionX);
@@ -52,7 +45,6 @@ public class NPC extends Charactor {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private void importImgStand_Jump() {
@@ -66,12 +58,8 @@ public class NPC extends Charactor {
 
 	}
 
-	public boolean getTouchPlayer() {
-		return touchPlayer;
-	}
-
 	public void Draw(Graphics2D g) {
-		if (this.action.equals("jump") && this.summonNPC == gp.getNumBackground() ) {
+		if (this.action.equals("jump") && this.summonNPC == gp.getNumBackground()) {
 			img = animationJump;
 			if (this.getPositionY() >= 400 && this.isJump == true) {
 				this.round++;
@@ -82,7 +70,6 @@ public class NPC extends Charactor {
 					}
 					this.round = 0;
 				}
-
 			}
 
 			else {
@@ -92,12 +79,9 @@ public class NPC extends Charactor {
 					this.round = 0;
 					if (this.getPositionY() >= 550) {
 						this.isJump = true;
-
 					}
-
 				}
 			}
-
 		} else if (this.action.equals("slide") && this.summonNPC == gp.getNumBackground()) {
 			img = animationSlide;
 		} else if (this.summonNPC != gp.getNumBackground()) {
@@ -109,30 +93,32 @@ public class NPC extends Charactor {
 	public void checkTouch() {
 		if (((player.getPositionX() <= this.getPositionX() + 90 && player.getPositionX() >= this.getPositionX() - 110)
 				&& (player.getPositionY() == 550)) && (this.summonNPC == gp.getNumBackground())) {
-			
-			if(this.action.equals("jump")) {
-				if(player.getDirection().equals("slide")) {
-					if(player.getPositionY() >= this.getPositionY()-20) {
+
+			if (this.action.equals("jump")) {
+				if (player.getDirection().equals("slide")) {
+					if (player.getPositionY() >= this.getPositionY() - 20) {
 						player.setStatus(false);
 					}
-				}
-				else {
-					if(this.getPositionY()+100 >= player.getPositionY()) {
+				} else {
+					if (this.getPositionY() + 100 >= player.getPositionY()) {
 						player.setStatus(false);
 					}
 
 				}
-			}
-			else {
+			} else {
 				player.setStatus(false);
 			}
-			
 
 		}
 
 	}
+
 	public void setTouchPlayer(boolean touchPlayer) {
 		this.touchPlayer = touchPlayer;
+	}
+
+	public boolean getTouchPlayer() {
+		return touchPlayer;
 	}
 
 	public class thread implements Runnable {

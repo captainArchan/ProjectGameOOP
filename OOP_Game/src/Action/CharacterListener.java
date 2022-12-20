@@ -7,10 +7,6 @@ import Display.GamePanel;
 
 public class CharacterListener implements KeyListener{
 	private boolean leftPressed , rightPressed, jumpPressed, slidePressed;
-	private GamePanel gp;
-	public CharacterListener(GamePanel gp) {
-		this.gp = gp;
-	}
     @Override
     public void keyTyped(KeyEvent e) {
     
@@ -35,7 +31,6 @@ public class CharacterListener implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-    	System.out.println("1");
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_W){
             jumpPressed = false;

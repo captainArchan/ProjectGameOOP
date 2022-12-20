@@ -1,26 +1,15 @@
 package Display;
-
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Calendar;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import Action.CharacterListener;
-
 import Charactor.Background;
 import Charactor.Goal;
 import Charactor.NPC;
 import Charactor.Pit;
 import Charactor.Player;
 
-/**
- *
- * @author pangpntt
- */
 public class GamePanel extends JPanel implements Runnable {
 	private Window window;
 	private final int originalTileSize = 16;
@@ -30,9 +19,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private int maxScreenRow = 8;
 	private final int screenWidth = tileSize * maxScreenCol;
 	private final int screenHeight = tileSize * maxScreenRow;
-	private long time;
-
-	private CharacterListener keyH = new CharacterListener(this);
+	private CharacterListener keyH = new CharacterListener();
 	private Thread gameThread;
 
 	int FPS = 60;
@@ -43,7 +30,6 @@ public class GamePanel extends JPanel implements Runnable {
 	private double delta = 0;
 	private long lastTime = System.nanoTime();
 	private long currentTime;
-
 	private int numBackground = 1;
 	private final int finalLine = 1096;
 	private final int startPositionX = 10;
@@ -64,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private NPC npc7 ;
 	private NPC npc8 ;
 	private Goal goal = new Goal(this, 1000, 450, 400, 400, 5);
-	private Background background = new Background(this, player);
+	private Background background = new Background(this);
 	private String nationality;
 
 	public GamePanel(Window window, String nationality) {
@@ -74,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
 		this.addKeyListener(keyH);
 		this.nationality = nationality;
 		player = new Player(this, keyH);
-		setNPC();
+		setNPC(); 
 		this.setFocusable(true);
 	}
 
@@ -121,7 +107,6 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public String getNationality() {
-		System.out.println(this.nationality);
 		return this.nationality;
 
 	}
@@ -136,6 +121,10 @@ public class GamePanel extends JPanel implements Runnable {
 				update();
 				repaint();
 				delta--;
+				if (player.getDirection().equals("win")) {
+					new ChangePanel(this.window, player.getDirection(), this.getNationality());
+					gameThread.stop();
+				}
 			}
 		}
 	}
@@ -147,10 +136,7 @@ public class GamePanel extends JPanel implements Runnable {
 			new ChangePanel(this.window, player.getDirection(), this.getNationality());
 			gameThread.stop();
 		}
-		else if (player.getDirection().equals("win")) {
-			new ChangePanel(this.window, player.getDirection(), this.getNationality());
-			gameThread.stop();
-		}
+
 
 		npc1.checkTouch();
 		npc2.checkTouch();
