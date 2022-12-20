@@ -30,13 +30,11 @@ public class Window extends JFrame{
         JPanel menu = new Menu(this);
         this.setLayout(new BorderLayout());
         this.add(menu);  
-        this.pack();
+        this.pack(); 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        
     }
-    
     public void playMusic(String musicLocation){
         try {          
             File musicPath = new File(musicLocation);

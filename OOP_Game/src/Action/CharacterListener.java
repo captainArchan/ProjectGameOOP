@@ -6,17 +6,14 @@ import java.awt.event.KeyListener;
 import Display.GamePanel;
 
 public class CharacterListener implements KeyListener{
-
 	private boolean leftPressed , rightPressed, jumpPressed, slidePressed;
 	private GamePanel gp;
 	public CharacterListener(GamePanel gp) {
 		this.gp = gp;
-
 	}
-	
-	
     @Override
     public void keyTyped(KeyEvent e) {
+    
     }
 
     @Override
@@ -34,7 +31,6 @@ public class CharacterListener implements KeyListener{
         if(code == KeyEvent.VK_S){
             slidePressed = true;
         }
-            
     }
 
     @Override

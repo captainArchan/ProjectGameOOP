@@ -16,6 +16,8 @@ import javax.sound.sampled.FloatControl;
 import javax.swing.*;
 
 import Action.DisplayListener;
+import Action.SoundListener;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -32,33 +34,25 @@ public class SystemsWindow extends JFrame {
 	private JFrame jf;
 	private Clip soundTheme;
 	private Window window;
-        private float currentVolume = 0;
+	private float currentVolume = 0;
+
 	public SystemsWindow(Window window) {
 		this.window = window;
 		this.soundTheme = this.window.getSound();
-		
-		
+
 		jpSystems = new JPanel();
 		jpsound = new JPanel();
 		jpback = new JPanel();
 		jpSlider = new JPanel();
 		jpEmtry = new JPanel();
-		
-		slider = new JSlider(-40,6);
-                slider.addChangeListener(new ChangeListener() {
-                    @Override
-                    public void stateChanged(ChangeEvent e) {
-                        currentVolume = slider.getValue();
-                        FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
-                        volume.setValue(currentVolume);
-                    }
-                });
+
+		slider = new JSlider(-40, 6);
+		slider.addChangeListener(new SoundListener(this.soundTheme, this));
 
 		sound = new JLabel("SOUND", SwingConstants.CENTER);
-
 		back = new JButton("BACK");
 		back.addActionListener(new DisplayListener(this.window, this));
-		back.setBorderPainted(false); 
+		back.setBorderPainted(false);
 		back.setBackground(new java.awt.Color(17, 20, 20));
 		back.setForeground(Color.RED);
 
@@ -74,7 +68,8 @@ public class SystemsWindow extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		imgSound = new JLabel(new ImageIcon(new ImageIcon(wPic).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT)));
+		imgSound = new JLabel(
+				new ImageIcon(new ImageIcon(wPic).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT)));
 
 		Font myFont = new Font("Monospaced", Font.BOLD, 80);
 		Font myFont2 = new Font("Monospaced", Font.BOLD, 30);
@@ -96,32 +91,16 @@ public class SystemsWindow extends JFrame {
 		jpback.add(back);
 		jpSystems.add(jpback);
 
-
 		this.add(jpSystems);
 		this.setSize(700, 320);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
-        
-        public void volumnUp(){
-            currentVolume += 1.0f;
-            if(currentVolume > 6.0f){
-                currentVolume = 6.0f;
-            }
-            FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
-            volume.setValue(currentVolume);
-        }
-        
-        public void volumnDown(){
-            currentVolume -= 1.0f;
-            if(currentVolume < -80.0f){
-                currentVolume = -80.0f;
-            }
-            FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
-            volume.setValue(currentVolume);
-            
-        }
-        
+	public int getSliderValue() {
+		return slider.getValue();
+	}
+
+
 
 }

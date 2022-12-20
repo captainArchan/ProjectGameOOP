@@ -28,9 +28,8 @@ public class Background {
 	private Player player;
 	public Background(GamePanel gp, Player player) {
 		this.gp = gp;
-		this.player = player;
+		this.player = player; 
 		importImg();
-
 	}
 
 	private void importImg() {

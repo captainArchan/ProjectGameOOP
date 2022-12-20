@@ -53,7 +53,6 @@ public class DisplayListener implements ActionListener {
 
 
 		} else if (e.getActionCommand().equals("BACK")) {
-			System.out.println(this.systemsWindow);
 			if (this.systemsWindow != null) {
 				this.systemsWindow.setVisible(false);
 				this.systemsWindow.dispose();
