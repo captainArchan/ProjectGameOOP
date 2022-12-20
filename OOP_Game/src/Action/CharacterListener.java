@@ -9,7 +9,6 @@ public class CharacterListener implements KeyListener{
 
 	private boolean leftPressed , rightPressed, jumpPressed, slidePressed;
 	private GamePanel gp;
-	
 	public CharacterListener(GamePanel gp) {
 		this.gp = gp;
 

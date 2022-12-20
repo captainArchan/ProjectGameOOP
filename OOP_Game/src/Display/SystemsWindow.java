@@ -11,6 +11,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.print.DocFlavor.URL;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.*;
 
 import Action.DisplayListener;
@@ -26,8 +28,13 @@ public class SystemsWindow extends JFrame {
 	private JSlider slider;
 	private BufferedImage wPic;
 	private JFrame jf;
-	public SystemsWindow(JFrame jf) {
-		this.jf = jf;
+	private Clip soundTheme;
+	private Window window;
+	public SystemsWindow(Window window) {
+		this.window = window;
+		this.soundTheme = this.window.getSound();
+		
+		
 		jpSystems = new JPanel();
 		jpsound = new JPanel();
 		jpback = new JPanel();
@@ -39,8 +46,8 @@ public class SystemsWindow extends JFrame {
 		sound = new JLabel("SOUND", SwingConstants.CENTER);
 
 		back = new JButton("BACK");
-		back.addActionListener(new DisplayListener(jf, this));
-		back.setBorderPainted(false);
+		back.addActionListener(new DisplayListener(this.window, this));
+		back.setBorderPainted(false); 
 		back.setBackground(new java.awt.Color(17, 20, 20));
 		back.setForeground(Color.RED);
 

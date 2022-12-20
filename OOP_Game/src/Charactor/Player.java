@@ -147,7 +147,7 @@ public class Player extends Charactor {
 		if (this.getDirection().equals("die")) {
 			img = animations[this.nationality][4];
 		}
-
+ 
 		else if (gp.getNumBackground() == 5 && this.getPositionX() >= 1030) {
 			img = animations[this.nationality][5];
 			this.setPositionX(1045);

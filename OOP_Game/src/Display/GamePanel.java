@@ -22,7 +22,7 @@ import Charactor.Player;
  * @author pangpntt
  */
 public class GamePanel extends JPanel implements Runnable {
-	private JFrame jf;
+	private Window window;
 	private final int originalTileSize = 16;
 	private final int scale = 6;
 	private final int tileSize = originalTileSize * scale;
@@ -67,8 +67,8 @@ public class GamePanel extends JPanel implements Runnable {
 	private Background background = new Background(this, player);
 	private String nationality;
 
-	public GamePanel(JFrame jf, String nationality) {
-		this.jf = jf;
+	public GamePanel(Window window, String nationality) {
+		this.window = window;
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(keyH);
@@ -144,11 +144,11 @@ public class GamePanel extends JPanel implements Runnable {
 		player.move();
 		checkBG();
 		if (player.getDirection().equals("die")) {
-			new ChangePanel(jf, player.getDirection(), this.getNationality());
+			new ChangePanel(this.window, player.getDirection(), this.getNationality());
 			gameThread.stop();
 		}
 		else if (player.getDirection().equals("win")) {
-			new ChangePanel(jf, player.getDirection(), this.getNationality());
+			new ChangePanel(this.window, player.getDirection(), this.getNationality());
 			gameThread.stop();
 		}
 

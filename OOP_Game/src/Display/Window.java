@@ -18,36 +18,31 @@ import javax.swing.*;
  *
  * @author pangpntt
  */
-public class Window{
+public class Window extends JFrame{
     private JPanel menu, selectTeam;
     private JInternalFrame windowWin, windowLost, windowPause;
     private GamePanel game;
-    private JFrame jf;
+    private Clip clip;
+    private String filePath = "src/Music/bgmusic.wav";
     
-    public Window(){
-    	JFrame jf = new JFrame();
-        JPanel menu = new Menu(jf);
-        jf.setLayout(new BorderLayout());
-        jf.add(menu);  
-        
-        String filePath = "src/Music/bgmusic.wav";
-  
+    public Window(){ 
         playMusic(filePath);
-        
-        jf.pack();
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setLocationRelativeTo(null);
-        jf.setVisible(true);
+        JPanel menu = new Menu(this);
+        this.setLayout(new BorderLayout());
+        this.add(menu);  
+        this.pack();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
         
     }
     
     public void playMusic(String musicLocation){
         try {          
             File musicPath = new File(musicLocation);
-            
-            if (musicPath.exists()){
+            if (musicPath.exists()){ 
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
+                this.clip = AudioSystem.getClip();
                 clip.open(audioInput);
                 FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
                 volume.setValue(-35.0f);
@@ -57,10 +52,13 @@ public class Window{
             else {
                 System.out.println("Can't find files.");
             }
-        }
+        }  
         catch (Exception ex){
             System.out.println(ex);
         }
+    }
+    public Clip getSound() {
+    	return this.clip;
     }
   
     public static void main(String[] args) {

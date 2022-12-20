@@ -23,15 +23,15 @@ public class WindowLose extends JPanel {
     private JButton buttonRestart, buttonBackToMenu;
     private JLabel textLose, txt2;
     private String nation;
-    public WindowLose(JFrame jf, String nation){
+    public WindowLose(Window window, String nation){
     	this.nation = nation;
         jptxt1 = new JPanel();
         jpbutton = new JPanel();
         jptxt2 = new JPanel();
         buttonRestart = new JButton("RESTART");
         buttonBackToMenu = new JButton("MENU");
-        buttonBackToMenu.addActionListener(new DisplayListener(jf, this));
-        buttonRestart.addActionListener(new DisplayListener(jf, this));
+        buttonBackToMenu.addActionListener(new DisplayListener(window, this));
+        buttonRestart.addActionListener(new DisplayListener(window, this));
         textLose = new JLabel("GAME", SwingConstants.CENTER);
         txt2 = new JLabel("OVER", SwingConstants.CENTER);
         

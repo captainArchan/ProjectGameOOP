@@ -33,18 +33,18 @@ public class SelectTeamWindow extends JPanel {
     private JButton buttonGermany, buttonBrazil, buttonArgentina, back;
     private JLabel title, germany, brazil, argentina;
     private BufferedImage PicGer, PicBra, PicArgen;
-    private JFrame jf;
-    //private Graphics g;
 
-    public SelectTeamWindow(JFrame jf) {
-    	this.jf = jf;
+    //private Graphics g;
+    private Window window;
+    public SelectTeamWindow(Window window) {
+    	this.window = window;
         jpteam = new JPanel();
         jpback = new JPanel();
         jptxt = new JPanel();
         jpSelect = new JPanel();
 
         back = new JButton("BACK");
-        back.addActionListener(new DisplayListener(jf));
+        back.addActionListener(new DisplayListener(this.window));
         
         title = new JLabel("SELECT", SwingConstants.CENTER);
         title.setBorder(new EmptyBorder(70, 0, 0, 0));
@@ -80,11 +80,11 @@ public class SelectTeamWindow extends JPanel {
         buttonGermany = new JButton(new ImageIcon(new ImageIcon(PicGer).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
         buttonBrazil = new JButton(new ImageIcon(new ImageIcon(PicBra).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
         buttonArgentina = new JButton(new ImageIcon(new ImageIcon(PicArgen).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT)));
-        buttonGermany.addActionListener(new DisplayListener(jf));
+        buttonGermany.addActionListener(new DisplayListener(this.window));
         buttonGermany.setActionCommand("Germany");
-        buttonBrazil.addActionListener(new DisplayListener(jf));
+        buttonBrazil.addActionListener(new DisplayListener(this.window));
         buttonBrazil.setActionCommand("Brazil");
-        buttonArgentina.addActionListener(new DisplayListener(jf));
+        buttonArgentina.addActionListener(new DisplayListener(this.window));
         buttonArgentina.setActionCommand("Argentina");
         this.setLayout(new BorderLayout());
         

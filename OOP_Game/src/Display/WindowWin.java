@@ -17,11 +17,13 @@ public class WindowWin extends JPanel{
     private JPanel jptxt, jpMenu;
     private JButton buttonBackToMenu;
     private JLabel textWin;
-    public WindowWin(JFrame jf){ 
+    private Window window;
+    public WindowWin(Window window){ 
+    	this.window = window;
         jptxt = new JPanel();
         jpMenu = new JPanel();
         buttonBackToMenu = new JButton("MENU");
-        buttonBackToMenu.addActionListener(new DisplayListener(jf));
+        buttonBackToMenu.addActionListener(new DisplayListener(this.window));
         textWin = new JLabel("WINNER", SwingConstants.CENTER);
         
         Font myFont = new Font("Monospaced", Font.BOLD, 100);
