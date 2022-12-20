@@ -16,6 +16,8 @@ import javax.sound.sampled.FloatControl;
 import javax.swing.*;
 
 import Action.DisplayListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -30,6 +32,8 @@ public class SystemsWindow extends JFrame {
 	private JFrame jf;
 	private Clip soundTheme;
 	private Window window;
+        private float previousVolumn = 0;
+        private float currentVolumn = 0;
 	public SystemsWindow(Window window) {
 		this.window = window;
 		this.soundTheme = this.window.getSound();
@@ -41,7 +45,15 @@ public class SystemsWindow extends JFrame {
 		jpSlider = new JPanel();
 		jpEmtry = new JPanel();
 		
-		slider = new JSlider();
+		slider = new JSlider(-40,6);
+                slider.addChangeListener(new ChangeListener() {
+                    @Override
+                    public void stateChanged(ChangeEvent e) {
+                        currentVolumn = slider.getValue();
+                        FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
+                        volume.setValue(currentVolumn);
+                    }
+                });
 
 		sound = new JLabel("SOUND", SwingConstants.CENTER);
 
@@ -92,5 +104,25 @@ public class SystemsWindow extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
+        
+        public void volumnUp(){
+            currentVolumn += 1.0f;
+            if(currentVolumn > 6.0f){
+                currentVolumn = 6.0f;
+            }
+            FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
+            volume.setValue(currentVolumn);
+        }
+        
+        public void volumnDown(){
+            currentVolumn -= 1.0f;
+            if(currentVolumn < -80.0f){
+                currentVolumn = -80.0f;
+            }
+            FloatControl volume = (FloatControl) soundTheme.getControl(FloatControl.Type.MASTER_GAIN);
+            volume.setValue(currentVolumn);
+            
+        }
+        
 
 }
