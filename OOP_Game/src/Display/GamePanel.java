@@ -182,7 +182,8 @@ public class GamePanel extends JPanel implements Runnable {
 		this.numBackground = numBackground;
 	}
 
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g)
+        {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		Graphics2D g3 = (Graphics2D) g;
@@ -224,16 +225,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 		player.Draw(g2);
 		g2.dispose();
-		if (jumping) {
-			if (playerY >= 100) {
-				playerY--;
-			} else {
-				playerY++;
-			}
-		}
-		if (playerY != 550 && !jumping) {
-			playerY++;
-		}
+		
 		repaint();
 	}
 }
