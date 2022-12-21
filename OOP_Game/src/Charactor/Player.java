@@ -52,7 +52,7 @@ public class Player extends Charactor {
 		this.setPositionX(10);
 		this.setPositionY(numStartY);
 		this.setSpeed(8);
-		this.setWeight(200);
+		this.setWidth(200);
 		this.setHeight(200);
 		this.setSpriteNum(1);
 
@@ -152,7 +152,7 @@ public class Player extends Charactor {
 				img = animations[this.nationality][2];
 			}
 		}
-		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
+		g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight(), null);
 		if (gp.getJumping()) {
 			if (this.getPositionY() >= 200) {
 				this.setPositionY(this.getPositionY() - 1);
