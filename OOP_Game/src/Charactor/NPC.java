@@ -21,10 +21,10 @@ public class NPC extends Charactor {
 	private int summonNPC;
 	private Player player;
 
-	public NPC(GamePanel gp, Player player, int height, int weight, int positionX, int positionY, String action,
+	public NPC(GamePanel gp, Player player, int height, int width, int positionX, int positionY, String action,
 			int summonNPC) {
 		this.setHeight(height);
-		this.setWeight(weight);
+		this.setWidth(width);
 		this.setPositionX(positionX);
 		this.setPositionY(positionY);
 		this.action = action;
@@ -87,7 +87,7 @@ public class NPC extends Charactor {
 		} else if (this.summonNPC != gp.getNumBackground()) {
 			img = null;
 		}
-		g.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
+		g.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight(), null);
 	}
 
 	public void checkTouch() {

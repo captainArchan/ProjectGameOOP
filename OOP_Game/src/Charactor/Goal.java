@@ -14,10 +14,10 @@ public class Goal extends Charactor {
 	private BufferedImage img;
 	private GamePanel gp;
 	private int summon;
-    public Goal(GamePanel gp, int positionX, int positionY, int weight, int height, int summon) {
+    public Goal(GamePanel gp, int positionX, int positionY, int width, int height, int summon) {
     	this.setPositionX(positionX);
     	this.setPositionY(positionY);
-    	this.setWeight(weight);
+    	this.setWidth(width);
     	this.setHeight(height);
     	this.gp = gp;
     	this.summon = summon;
@@ -35,7 +35,7 @@ public class Goal extends Charactor {
 	}
 	public void Draw(Graphics2D g2) {
 		if(this.gp.getNumBackground() == summon) {
-			g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWeight(), this.getHeight(), null);
+			g2.drawImage(img, this.getPositionX(), this.getPositionY(), this.getWidth(), this.getHeight(), null);
 		}
 	}
 }

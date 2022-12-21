@@ -18,11 +18,11 @@ public class Charactor extends JPanel {
 		return this.height;
 	}
 
-	public void setWeight(int weight) {
-		this.width = weight;
+	public void setWidth(int width) {
+		this.width = width;
 	}
 
-	public int getWeight() {
+	public int getWidth() {
 		return this.width;
 	}
 
